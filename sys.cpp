@@ -1,9 +1,12 @@
 #include "sys.h"
+#include <iostream>
 
 sys::sys()
 {
     head = NULL; 
 }
+
+//init list for sy
 
 //recursively deallocates all nodes
 int sys::removeAll(playerN *& head)
@@ -27,12 +30,11 @@ sys::~sys()
     removeAll();
 }
 
-//recursively insert into a LLL
-int sys::insertPlayerN(playerN * player_toadd, playerN *& head)
+//recursively inserts a player into a LLL
+int sys::insertPlayerN(player player_toadd, playerN *& head)
 {
     if(!head)
     {
-        //copy functiuon for playerN?:42
         head = new playerN(player_toadd); //get this smoothed out
         head->to_next() = NULL;
     }
@@ -44,12 +46,9 @@ int sys::insertPlayerN(playerN * player_toadd, playerN *& head)
 }
 
 //dynaimcally creates a player and houses it into a node
-int sys::createPlayer(char * name_toadd)
+int sys::createPlayer(player player_toadd)
 {
-    player * newplayer = new player(name_toadd); //this is dynamic is this working
-    playerN * newpN = new playerN(newplayer);   //this is also dynamic
-
-    insertPlayerN(newpN, head);
+    insertPlayerN(player_toadd, head);
 
     return 1; 
 }
@@ -58,7 +57,6 @@ int sys::createPlayer(char * name_toadd)
 int sys::displayPlayers(playerN *& head)
 {
     if(!head) return 0; 
-    
     head->displayN(); //man i want to virtualize display 
     int count = displayPlayers(head->to_next()) + 1;
     return count;
@@ -66,6 +64,7 @@ int sys::displayPlayers(playerN *& head)
 
 int sys::displayPlayers()
 {
+    std::cout << "displaying " << std::endl;
     displayPlayers(head);
     return 1;
 }

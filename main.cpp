@@ -3,21 +3,17 @@
 #include <iostream>
 int main()
 {
-    //sys sys;
+    sys sys;
     std::cout << "create a player " << std::endl;
     char name[20];
     std::cin >> name;
     std::cin.ignore(100, '\n');
-    
-    //Player 
-    player p(name);
-    //p.displayP();
-  
-   // playerN pN(p);
-   // pN.displayN();
 
+    player temp_player(name);
+
+    sys.createPlayer(temp_player); //takes a player(makes it into a node) inserts into LLL
     //sys.createPlayer(name); 
-    //sys.displayPlayers(); 
+    sys.displayPlayers(); 
     
     return 1;
 }

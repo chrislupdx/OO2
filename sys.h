@@ -8,10 +8,10 @@ class sys
     ~sys();
         
     //create is insert
-    int createPlayer(char * name); //hopefully calls player's parameterized cosntructor
+    int createPlayer(player name); //hopefully calls player's parameterized cosntructor
     
     //inserts a plyaer into a LLL
-    int insertPlayerN(playerN * player_toadd, playerN *& head);
+    int insertPlayerN(player player_toadd, playerN *& head);
 
     //displayPlayerList
     int displayPlayers();

@@ -9,7 +9,22 @@ player::player()
 
 player::player(char * nametoadd )
 {
-   name = nametoadd; 
+    name = NULL;
+    name = new char[strlen(nametoadd) + 1];
+    strcpy(name, nametoadd);
+}
+
+player::player(const player & player_toadd)
+{
+    if(player_toadd.name)
+    {
+    name = new char[strlen(player_toadd.name) + 1];
+    strcpy(name, player_toadd.name);
+    }
+    else
+    {
+    name = NULL; 
+    }
 }
 
 player::~player()
@@ -17,20 +32,17 @@ player::~player()
     name = NULL; 
 }
 
-//deepcopies the arg into the member vlas
-int player::copyP(player * player_tocopy)
-{
-    name = new char[strlen(player_tocopy->name) + 1];
-    strcpy(name, player_tocopy->name);
-
-    
-    return 1;
-}
-
 //display
 int player::displayP()
 {
-    std::cout << "Player " << name << std::endl;
+    if(name)
+    {    
+        std::cout << "Player " << name << std::endl;
+    }
+    else
+    {
+        std::cout << "no name" << std::endl;
+    }
 
     return 1;
 }

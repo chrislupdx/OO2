@@ -1,5 +1,6 @@
 //playerN.cpp
 #include "playerN.h"
+#include <iostream>
 //#include "player.h"
 
 playerN::playerN()
@@ -7,15 +8,9 @@ playerN::playerN()
     playerData = NULL;
 }
 
-playerN::playerN(playerN * playerToadd)
+playerN::playerN(player & playerToadd)
 {
-    playerData->copyP(playerToadd->playerData);
-    next = NULL;
-}
-
-playerN::playerN(player * playerToadd)
-{
-    playerData->copyP(playerToadd);
+    playerData = new player(playerToadd);
     next = NULL; 
 }
 
@@ -27,12 +22,15 @@ playerN::~playerN()
 
 playerN *& playerN::to_next() {return next; }
 
-//just displays the internal
 int playerN::displayN()
 {
     if(playerData)
     {
         playerData->displayP();
+    }
+    else
+    {
+        std::cout << "no playerdata" << std::endl;
     }
     return 1;
 }

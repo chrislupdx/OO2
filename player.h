@@ -7,9 +7,9 @@ class player
     public:
     player();
     ~player();
+    player(const player & player_toadd);
     player(char * name); //this will expand as necessary
 
-    int copyP(player * player_tocopy); //copies arg into the calling class
     int displayP();
 
     protected:
