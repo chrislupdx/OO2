@@ -22,7 +22,8 @@ class sys
     int retrievePlayer(playerN * head, char * name_tf);  //recursive call
  
     //delete a player by name
-    //int deleteP(char * name);
+    int deletePlayer(char * name);
+    int deletePlayer(playerN *& head, char * player_name);
     
     protected:
     playerN * head; //this is an LLL

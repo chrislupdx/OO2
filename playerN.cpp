@@ -38,10 +38,6 @@ int playerN::displayN()
 //returns 0 if match
 int playerN::compare(char * name_tocp)
 {
-    if(playerData->compP(name_tocp) == 0)
-    {
-        return 0;
-    }
-    return 1;
+    return playerData->compP(name_tocp);
 }
 

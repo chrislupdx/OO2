@@ -90,6 +90,25 @@ int sys::retrievePlayer(playerN * head, char * name_tf)
     {
         head->displayN();
     }
-
     return retrievePlayer(head->to_next(), name_tf);
+}
+
+int sys::deletePlayer(char * player_name)
+{
+    return deletePlayer(head, player_name);
+}
+
+//recursively traverse then delete
+int sys::deletePlayer(playerN *& head, char * player_name)
+{
+    if(!head) return 0;
+    if(head->compare(player_name) == 0)
+    {
+        playerN * temp = head->to_next();
+        delete head;
+        head = temp; //successful deletion
+        //if(!head) return 0; //if we wanted find and delete all matching cases
+        return 0;
+    }
+    return deletePlayer(head->to_next(), player_name);
 }
