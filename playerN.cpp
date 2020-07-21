@@ -34,3 +34,14 @@ int playerN::displayN()
     }
     return 1;
 }
+
+//returns 0 if match
+int playerN::compare(char * name_tocp)
+{
+    if(playerData->compP(name_tocp) == 0)
+    {
+        return 0;
+    }
+    return 1;
+}
+

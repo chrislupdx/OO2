@@ -50,3 +50,12 @@ int player::displayP()
 //delete?
 
 //insert
+//copmare
+int player::compP(char * nametocp)
+{
+    if(strcmp(name, nametocp) == 0)
+    {
+    return 0;
+    }
+    return 1;
+}

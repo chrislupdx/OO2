@@ -68,3 +68,28 @@ int sys::displayPlayers()
     displayPlayers(head);
     return 1;
 }
+
+//find and match by name (NEEDS A GETTER)
+//int sys::retrievePlayer(player * player_tf)
+//{
+//    return retrievePlayer(head, player_tf->name);    
+//}
+
+//overloaded version takes a char
+int sys::retrievePlayer(char * player_name)
+{
+    return retrievePlayer(head, player_name);    
+}
+
+//goes thorugh the actual list
+int sys::retrievePlayer(playerN * head, char * name_tf)
+{
+    if(!head) return 0;
+    
+    if(head->compare(name_tf) == 0)
+    {
+        head->displayN();
+    }
+
+    return retrievePlayer(head->to_next(), name_tf);
+}

@@ -10,7 +10,8 @@ class playerN {
     playerN *& to_next(); 
     ~playerN();
     int copyN(playerN * playerN_tocopy);
-    
+    int compare(char * name_tocp);
+
     int displayN();
     //setplayerN();
 

@@ -17,7 +17,9 @@ class sys
     int displayPlayers();
 
     //retrieve a player by name
-    //int retreiveP(char * name);
+    //int retrievePlayer(player * player_tf); //takes a player, needs getter
+    int retrievePlayer(char * player_name); //takes a char
+    int retrievePlayer(playerN * head, char * name_tf);  //recursive call
  
     //delete a player by name
     //int deleteP(char * name);

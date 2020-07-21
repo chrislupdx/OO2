@@ -26,9 +26,13 @@ int main()
     {
         done = true;
     }
+
+    std::cout << "retrieving" << std::endl;
+    char name1[20];
+    std::cin >>name1;
+    std::cin.ignore(100,'\n');
+    sys.retrievePlayer(name1);
     };
-
-
 
 
     return 1;

@@ -9,7 +9,7 @@ class player
     ~player();
     player(const player & player_toadd);
     player(char * name); //this will expand as necessary
-
+    int compP(char * name); //returns 0 if match
     int displayP();
 
     protected:
