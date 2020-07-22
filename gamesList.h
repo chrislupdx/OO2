@@ -5,8 +5,12 @@ class gamesL()
 {
     public:
         gamesL();
+
         ~gamesL();
 
+        //
+
+
     protected:
-        gameNode * rear;
+        gameN * rear;
 };

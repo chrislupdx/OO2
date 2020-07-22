@@ -8,7 +8,7 @@ class game
     game();
     virtual ~game();
     
-    virtual int play()=0; //pure virtual, can only make pointers via dynamic binding
+    virtual int play(); //contains: runs a do/while loop
 
     virtual int quit(); //
 
@@ -20,9 +20,8 @@ class game
     //derived_type * new_ptr = <dynamic_cast><derived_type *> (old_ptr);
 
     protected:
-    //char * tag;
-    //int * hScore;
-    //int *pScore
+    //
+    //what do we want to dow tih
 };
 
 class rngGame : public game
