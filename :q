@@ -1,42 +1,31 @@
 //thiS is the implementation of main it likely talks to the game system
 #include "sys.h"
 //#include "game.h"
-//#include "gamesList.h"
 #include <iostream>
 int main()
 {
     sys sys;
-    game * rngGame;//init type not working
-    gamesL * gList;
-
+    game * game1();//init type
     //bool done = false;
     //bool done2 = false;
-
-    //rngGame tests
-    //testing creating rngGame, then insert it into the a node
-    //then put that node into the cll
-    bool done = false;
-    while(done == false)
+    bool done3 = false; 
+    while(done3 == false)
     {
-
-        std::cout << "creating game" << std::endl;
-
+        game1->play();
     }
-    //testing 
 
-
-
-
-    //SYS tests
-    //while(done == false) //testing creating players in
+    //while(done == false)
     //{
     //    std::cout << "create a player " << std::endl;
     //    char name[20];
     //    std::cin >> name;
     //    std::cin.ignore(100, '\n');
+
     //    player temp_player(name);
+
     //    sys.createPlayer(temp_player); //takes a player(makes it into a node) inserts into LLL
     //    sys.displayPlayers(); 
+
     //    std::cout << "insesrt another? y/n " << std::endl;
     //    char yn;
     //    std::cin >> yn;
@@ -46,13 +35,14 @@ int main()
     //        done = true;
     //    }
     //};
-    //while(done2 == false) //testing retriving players
+    //while(done2 == false)
     //{
     //    std::cout << "retrieving" << std::endl;
     //    char name1[20];
     //    std::cin >>name1;
     //    std::cin.ignore(100,'\n');
     //    sys.retrievePlayer(name1);
+
     //    std::cout << "retrieve another? y/n " << std::endl;
     //    char yna;
     //    std::cin >> yna;
@@ -62,7 +52,7 @@ int main()
     //        done2 = true;
     //    }
     //}
-    //while(done3 == false) //testing deleting players
+    //while(done3 == false)
     //{
     //    std::cout << "deleting" << std::endl;
     //    sys.displayPlayers();
@@ -72,7 +62,9 @@ int main()
     //    std::cin.ignore(100,'\n');
     //    sys.deletePlayer(name2);
     //    sys.displayPlayers(); 
+
     //    std::cout << "delete another? y/n " << std::endl;
+
     //    char ynd;
     //    std::cin >> ynd;
     //    std::cin.ignore(100,'\n');

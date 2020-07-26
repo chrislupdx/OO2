@@ -1,8 +1,11 @@
 //playerN.h
 //this is a node 
-#include "player.h"
+#include "gamesList.h"
 
-class playerN {
+//#include "player.h"
+
+class playerN 
+{
     public:
     playerN();
     playerN(playerN & playerToadd); //takes a NODE
@@ -16,6 +19,6 @@ class playerN {
     //setplayerN();
 
     protected:
-    player * playerData;
+    player * playerData; //player is a derived class of gamesL
     playerN * next;
 };

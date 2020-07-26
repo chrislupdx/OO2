@@ -1,10 +1,11 @@
 //this is the implementation of player.h
-#include "player.h"
+#include "gamesList.h" //player.h implmeentation lives there
 #include <iostream>
 
 player::player()
 {
     name = NULL; 
+    score = 0;
 }
 
 player::player(char * nametoadd )
