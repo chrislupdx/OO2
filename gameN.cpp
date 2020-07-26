@@ -8,13 +8,16 @@ gameN::gameN()
     next = NULL;
 }
 
-gameN::gameN(game * gameToadd)
+//figure out if you're consting
+gameN::gameN(game * gameToadd, int choice) 
 {
-    //check how else blocks play with RTTI
+    //if(choice == 1)
+    //{
     rngGame * r_test = dynamic_cast<rngGame*>(gameToadd);
-    if(r_test)
+    //}
+    if(r_test) //check if the dynamic cast succeeded
     {
-        aGame = new rngGame;
+        aGame = new rngGame; //set the node's game to game type rng
     }
 }
 

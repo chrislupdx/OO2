@@ -6,26 +6,22 @@
 int main()
 {
     sys sys;
-    game * rngGame;//init type not working
-    gamesL * gList;
+    //gameN * node(1, rngGame); //might need to test
+    //gamesL * gamel; //we're gonna want to write+test a fancy add function that takes prompts from user to decide how to build stuff
+
+   
+    game * rng;
+    rng = new rngGame; //trying to upcast
+    rng->play();
+    
+    //if(typeid(*rng) == typeid(rngGame))
+    //{
+    //    std::cout << "this is an rnggame " << std::endl;
+    //}
+
 
     //bool done = false;
     //bool done2 = false;
-
-    //rngGame tests
-    //testing creating rngGame, then insert it into the a node
-    //then put that node into the cll
-    bool done = false;
-    while(done == false)
-    {
-
-        std::cout << "creating game" << std::endl;
-
-    }
-    //testing 
-
-
-
 
     //SYS tests
     //while(done == false) //testing creating players in

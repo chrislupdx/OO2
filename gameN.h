@@ -6,9 +6,8 @@ class gameN
 {
     public:
     gameN();
-    //paramterized constructor uses dynamic binding to produce either game 1/2/3
+    gameN(game * gametoadd, int choice); //RTTI shennanigans
     ~gameN();
-    gameN(game * gametoadd); //RTTI shennanigans
     //add a game into this
 
     int play();

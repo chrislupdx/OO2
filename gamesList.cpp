@@ -1,6 +1,7 @@
 //gamesList.cpp
 #include "gamesList.h"
 #include "cstddef"
+#include <iostream>
 gamesL::gamesL()
 {
     wins = 0;
@@ -21,15 +22,16 @@ int gamesL::removeAll()
     return 0;
 }
 
-//how do you want to add a node
-//populate the node/w relevant game
-//the work of deiciding the derived class is not here
 int gamesL::add(game * newgame)
 {
     //super boring cll insertion algorithmn
     if(!rear)
     {
-        rear = new gameN(newgame);
+        std::cout << "!rear: input a game type (1,2,3)" << std::endl;
+        int num;
+        std::cin >> num;
+        std::cin.ignore(100,'\n');
+        rear = new gameN(newgame, num); //the constructor does the work
     }
     return 1;
 }
