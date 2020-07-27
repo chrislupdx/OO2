@@ -2,23 +2,32 @@
 //gameN.cpp
 #include "gameN.h"
 #include <cstring>
-
 gameN::gameN()
 {
     next = NULL;
 }
-
 //figure out if you're consting
-gameN::gameN(game * gameToadd, int choice) 
+gameN::gameN(game * gameToadd) 
 {
-    //if(choice == 1)
-    //{
     rngGame * r_test = dynamic_cast<rngGame*>(gameToadd);
-    //}
     if(r_test) //check if the dynamic cast succeeded
     {
         aGame = new rngGame; //set the node's game to game type rng
+        aGame->copy(gameToadd);  //thoughts on a dynamically bound copy 
     }
+    next = NULL;
+    //yum * y_test = dynamic_cast<yum*>(gameToadd);
+    //if(y_test)
+    //{
+    //    aGame = new yum;
+    //}
+}
+
+//i hope to god this copy constructor works with dynamic binding
+gameN::gameN(gameN * nodetcp)
+{
+    next = NULL; 
+    //aGame = new game(nodetcp->r_game());// ugh this getter doesn't work
 }
 
 gameN::~gameN()
@@ -27,4 +36,18 @@ gameN::~gameN()
     aGame = NULL;
 }
 
-gameN *& gameN::to_next() {return next; } 
+int gameN::play()
+{
+
+    return 1;
+}
+
+int gameN::display()
+{
+    return aGame->display();
+}
+
+//gameN *& gameN::to_next() {return next; } 
+gameN * gameN::to_next() {return next; }
+void gameN::set_next(gameN * next) {this->next = next;}
+game * gameN::r_game() {return aGame; }

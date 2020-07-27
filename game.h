@@ -5,11 +5,15 @@ class game
     public:
     //parameteriazed constructor ?
     game();
+    game(game * gtcp); //do we need to virtualize this in some way
     virtual ~game();
     virtual int play()=0; //pure virtual, can only make pointers via dynamic binding
     virtual int quit()=0;
     virtual int taketurn(); //check if we realllly want to virtualize it
     virtual int setTag(char * name)=0;
+    virtual int copy(game * gametcp)=0; //i think this needs to exist 
+    int display(); //ugh god can we even call this
+    
     //if(we need overloaded operators) implement here
     //derived_type * new_ptr = <dynamic_cast><derived_type *> (old_ptr);
     //getWinData();
@@ -31,7 +35,18 @@ class rngGame : public game
         int setTag(char * name);
         //int static_cast<type*>pickCard();
         int rollDie();
+        int copy(game * gametcp);
 private:
+};
+
+//id second game rules
+class yum : public game
+{
+    public:
+        yum();
+        ~yum();
+
+    private:
 };
 
 //2nd game

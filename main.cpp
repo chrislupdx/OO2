@@ -6,14 +6,22 @@
 int main()
 {
     sys sys;
-    //gameN * node(1, rngGame); //might need to test
-    //gamesL * gamel; //we're gonna want to write+test a fancy add function that takes prompts from user to decide how to build stuff
+    game * rng = new rngGame; //trying to upcast
+    //gameN * newNode = new gameN(rng);
+    gamesL * gamel = new gamesL;
+    gamel->add(rng);
+    gamel->display();
 
-   
-    game * rng;
-    rng = new rngGame; //trying to upcast
-    rng->play(); //this works;
-   
+
+    //adding multiple games/displaying them
+    //playing the games in the CLL
+    //delete games
+    //propogate win data
+
+    //access that list then play the game
+
+    //put that game into a gameNode
+
     //where what does the player do
     //what state do we want to add games to gameN?
 

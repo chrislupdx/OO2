@@ -5,7 +5,6 @@
 player::player()
 {
     name = NULL; 
-    score = 0;
 }
 
 player::player(char * nametoadd )

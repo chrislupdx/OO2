@@ -43,24 +43,28 @@ int gamesL::add(game * newN)
     if(!rear) //if empty /base case
     {
         rear = new gameN(newN);  //i think this is using gameN.cpp's upcasting constructor
-        rear->set_next(rear); 
+        rear->to_next() = rear; 
         return 0;
     }
-    gameN * temp = new gameN(newN);
-    gameN * front = rear->to_next();
-    rear->set_next(temp); //position temp behind rear
-    temp->set_next(front);
-    rear = temp;
-    return 1;
+    //if(rear->to_next() == rear) //general case
+    //{
+        gameN * temp = new gameN(newN);
+        temp->to_next() = rear->to_next();
+        rear->to_next() = temp;
+        rear = temp; //this newly inserted poitner is put into rear
+        //temp(newN);
+        return 1;
+    //}
+    //gameN * hold = new gameN(newN);
+    //hold->to_next() = rear->to_next();
+    //rear->to_next() = hold;
+    ////hold(newN);
+    //rear = hold;
+    //return 1;
 }
 
 int gamesL::display()
 {
-    if(!rear)
-    {
-        std::cout << "empty gamelist" << std::endl;
-        return 0;
-    }
     return display(rear->to_next());
 }
 
@@ -68,7 +72,7 @@ int gamesL::display(gameN * curr)
 {
     if(curr == rear)
     {
-        curr->display();
+        //a final call
         return 0;
     }
 

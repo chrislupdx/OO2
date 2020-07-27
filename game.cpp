@@ -6,7 +6,8 @@
 
 /*
  * Game Class: line 8
- * rngGame Class: line 48
+ * rngGame Class: line 55
+ * 2game Class:  line 124
  */
 game::game()
 {
@@ -14,10 +15,24 @@ game::game()
     win = false;
 }
 
+game::game(game * gtcp)
+{
+    tag = new char[strlen(gtcp->tag) + 1];
+    strcpy(gtcp->tag, tag);
+    win = gtcp->win;
+}
+
 game::~game()
 {
     tag = NULL;
     win = false;
+}
+
+int game::display()
+{
+    std::cout << "win? : " << win << std::endl;
+    std::cout << "tag? : " << tag << std::endl;
+    return 1;
 }
 
 int game::play()
@@ -44,6 +59,15 @@ int game::setTag(char * name)
     strcpy(tag, name);
     return 1;
 }
+
+//copies into the calling class
+int game::copy(game * gtcp)
+{
+    tag = new char[strlen(gtcp->tag) + 1];
+    strcpy(gtcp->tag, tag);
+    win = gtcp->win;
+    return 1;
+}
 ///////////////////////////////////////////////////////////////////////
 rngGame::rngGame()
 {
@@ -57,9 +81,20 @@ rngGame::~rngGame()
 int rngGame::play()
 {
     std::cout << "playing RNGGame" << std::endl;
+
+    char name[20];
+    
+    std::cout << "input name " << std::endl;
+    std::cin >> name;
+    std::cin.ignore(100,'\n');
+    setTag(name);
+    std::cout << "tag is : " << tag << std::endl;
+
+
     std::cout << "Roll? (y/n) No will exit and you will lose. " << std::endl;
     char response;
     std::cin >> response;
+    std::cin.ignore(100,'\n');
     int outcome = 0;
     if(response == 'y')
     {
@@ -84,29 +119,14 @@ int rngGame::play()
         std::cout << "Lose. " << std::endl;
         win = false;
     }
-    //play again?
-    //std::cout << "quit? (y/n)" << std::endl;
-    //char q;
-    //std::cin >> q;
-    //std::cin.ignore(100, '\n');
-    //    if(q == 'y')
-    //    {
-            std::cout << "quitting" << std::endl;
-            //quit();
-    //    }
-    //    else
-    //    {
-    //        //continue looping
-    //    }
-
+            quit();
     return 1;
 }
 
 int rngGame::quit()
 {
     std::cout << "quitting RNG" << std::endl;
-    //move to the next item in the CLL
-    //calls to_next();
+    //exits the loop
     return 1;
 }
 
@@ -117,9 +137,28 @@ int rngGame::setTag(char * name)
     return 1;
 }
 
+//copies the data members into the arg.
+int rngGame::copy(game * gametcp)
+{
+    //call the base function's copy
+    return 1;
+}
+
 //returns a random value between 1-10
 int rngGame::rollDie() //i think we need to do rtti style dynamic casting for this non-virtual
 {
     return 5;
     //returns the value
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+yum::yum()
+{
+
+}
+
+yum::~yum()
+{
+
 }
