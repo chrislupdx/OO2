@@ -13,12 +13,15 @@ game::game()
 {
     tag = NULL;
     win = false;
+    gametype = NULL;
 }
 
 game::game(game * gtcp)
 {
     tag = new char[strlen(gtcp->tag) + 1];
     strcpy(gtcp->tag, tag);
+    gametype = new char[strlen(gtcp->gametype) + 1];
+    strcpy(gtcp->gametype, gametype);
     win = gtcp->win;
 }
 
@@ -89,7 +92,6 @@ int rngGame::play()
     std::cout << "playing RNGGame" << std::endl;
 
     char name[20];
-    
     std::cout << "input name " << std::endl;
     std::cin >> name;
     std::cin.ignore(100,'\n');
@@ -129,6 +131,7 @@ int rngGame::play()
     return 1;
 }
 
+//quit doesn't really do anything
 int rngGame::quit()
 {
     std::cout << "quitting RNG" << std::endl;
@@ -164,7 +167,71 @@ yum::yum()
 
 }
 
+int yum::play()
+{
+    std::cout << std::endl;
+    std::cout << "playing " << std::endl;
+
+    char name[20];
+    std::cout << "input name " << std::endl;
+    std::cin >> name;
+    std::cin.ignore(100,'\n');
+    setTag(name);
+    std::cout << "tag is : " << tag << std::endl;
+
+    quit();
+    return 1;
+}
+
+//quit doesn't really do anythinglol
+int yum::quit()
+{
+    std::cout << "quitting YUM" << std::endl;
+    return 1;
+}
+
 yum::~yum()
 {
 
+}
+
+
+int yum::setTag(char * name)
+{
+    return 1;
+}
+
+int yum::copy(game * gametcp)
+{
+    return 1;
+}
+
+
+/////////////////////////////////////////////////////////
+blackjack::blackjack()
+{
+}
+
+blackjack::~blackjack()
+{
+}
+
+int blackjack::play()
+{
+    return 1;
+}
+
+int blackjack::quit()
+{
+    return 1;
+}
+
+int blackjack::setTag(char * name)
+{
+    return 1;
+}
+
+int blackjack::copy(game * gametocp)
+{
+    return 1;
 }

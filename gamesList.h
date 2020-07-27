@@ -8,7 +8,6 @@ class gamesL
     public:
         gamesL();
         ~gamesL();
-
         //sumWins();
         //int add(game * newgame);  //how does this handle dynamic binding
         int add(game * newGame); //im pretty sure I don't want this
@@ -21,7 +20,6 @@ class gamesL
         int wins; //can we pass it to the 
         gameN * rear; //this is A CLL
 };
-
 //this is player.h, .cpp is @ player.cpp
 class player : public gamesL
 {
@@ -34,7 +32,6 @@ class player : public gamesL
     int displayP();
     //int createGame(char * choice, game *& newgame); //user decides what derived is created
     //does a thing
-    
     protected:
     char * name;
     //int score; //we coudl just use countwins

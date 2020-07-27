@@ -15,12 +15,22 @@ gameN::gameN(game * gameToadd)
         aGame = new rngGame; //set the node's game to game type rng
         aGame->copy(gameToadd);  //thoughts on a dynamically bound copy 
     }
+
+    yum * y_test = dynamic_cast<yum*>(gameToadd);
+    if(y_test)
+    {
+        aGame = new yum;
+        aGame->copy(gameToadd);
+    }
+
+    blackjack *b_test = dynamic_cast<blackjack*>(gameToadd);
+    if(b_test)
+    {
+        aGame = new blackjack;
+        aGame->copy(gameToadd);
+    }
+    
     next = NULL;
-    //yum * y_test = dynamic_cast<yum*>(gameToadd);
-    //if(y_test)
-    //{
-    //    aGame = new yum;
-    //}
 }
 
 //i hope to god this copy constructor works with dynamic binding

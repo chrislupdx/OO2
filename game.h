@@ -18,6 +18,7 @@ class game
     //derived_type * new_ptr = <dynamic_cast><derived_type *> (old_ptr);
     //getWinData();
     protected:
+    char * gametype;
     char * tag;
     bool win;
 };
@@ -45,9 +46,25 @@ class yum : public game
     public:
         yum();
         ~yum();
-
+        int play(); //NOT DONE 
+        int quit(); //not done
+        int setTag(char * name); //not done
+        int copy(game * gametcp); //not done
     private:
 };
 
-//2nd game
-//3rd game
+//id third game rules
+class blackjack : public game
+{
+    //each draw two numbres
+    //whoever has the bigger pile wins
+    public:
+        blackjack();
+        ~blackjack();
+        int play(); //not done
+        int quit(); //not done
+        int setTag(char * name); //not done
+        int copy(game * gametcp); //not done
+
+    private:
+};
