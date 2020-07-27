@@ -57,11 +57,24 @@ rngGame::~rngGame()
 int rngGame::play()
 {
     std::cout << "playing RNGGame" << std::endl;
-
-    //take turn?
-
-    int outcome = rollDie();
-    if(outcome > 6)         //wint if you roll 7+
+    std::cout << "Roll? (y/n) No will exit and you will lose. " << std::endl;
+    char response;
+    std::cin >> response;
+    int outcome = 0;
+    if(response == 'y')
+    {
+        outcome = rollDie();
+    }
+    else
+    {
+        std::cout << "you lose " << std::endl;
+        win = false;
+        //quit(); //wrtie quit
+    }
+    std::cout << "you rolled : " << outcome << std::endl;
+    
+    //use take turn?
+    if(outcome > 6) //wint if you roll 7+
     {
         std::cout << "win." << std::endl;
         win = true;
@@ -72,8 +85,20 @@ int rngGame::play()
         win = false;
     }
     //play again?
+    //std::cout << "quit? (y/n)" << std::endl;
+    //char q;
+    //std::cin >> q;
+    //std::cin.ignore(100, '\n');
+    //    if(q == 'y')
+    //    {
+            std::cout << "quitting" << std::endl;
+            //quit();
+    //    }
+    //    else
+    //    {
+    //        //continue looping
+    //    }
 
-    //quit();
     return 1;
 }
 
@@ -93,7 +118,7 @@ int rngGame::setTag(char * name)
 }
 
 //returns a random value between 1-10
-int rngGame::rollDie()
+int rngGame::rollDie() //i think we need to do rtti style dynamic casting for this non-virtual
 {
     return 5;
     //returns the value

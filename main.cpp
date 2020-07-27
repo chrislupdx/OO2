@@ -12,8 +12,12 @@ int main()
    
     game * rng;
     rng = new rngGame; //trying to upcast
-    rng->play();
-    
+    rng->play(); //this works;
+   
+    //where what does the player do
+    //what state do we want to add games to gameN?
+
+
     //if(typeid(*rng) == typeid(rngGame))
     //{
     //    std::cout << "this is an rnggame " << std::endl;
