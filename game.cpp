@@ -30,8 +30,13 @@ game::~game()
 
 int game::display()
 {
+    //displaying order in list would bedope but uncessary
+    std::cout << "game # " << std::endl;
     std::cout << "win? : " << win << std::endl;
+    if(tag)
+    {
     std::cout << "tag? : " << tag << std::endl;
+    }
     return 1;
 }
 
@@ -80,6 +85,7 @@ rngGame::~rngGame()
 //this should cover the pure virtual's play
 int rngGame::play()
 {
+    std::cout << std::endl;
     std::cout << "playing RNGGame" << std::endl;
 
     char name[20];

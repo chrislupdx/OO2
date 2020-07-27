@@ -38,8 +38,7 @@ gameN::~gameN()
 
 int gameN::play()
 {
-
-    return 1;
+    return aGame->play(); //well, let's see if it can dynamically bind right
 }
 
 int gameN::display()

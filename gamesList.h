@@ -10,13 +10,12 @@ class gamesL
         ~gamesL();
 
         //sumWins();
-
         //int add(game * newgame);  //how does this handle dynamic binding
         int add(game * newGame); //im pretty sure I don't want this
         int removeAll();
         int display();
         int countwins(); //goes through calls gatherwin and returns the sum
-    protected:
+        int play(); //plays game NOT DONE protected:
         int removeAll(gameN * rear);
         int display(gameN * rear);
         int wins; //can we pass it to the 

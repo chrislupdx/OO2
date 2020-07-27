@@ -17,6 +17,8 @@ class playerN
 
     int displayN();
     //setplayerN();
+    //playgame
+    //displaywins
 
     protected:
     player * playerData; //player is a derived class of gamesL

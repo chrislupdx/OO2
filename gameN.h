@@ -11,7 +11,7 @@ class gameN
     ~gameN();
     //add a game into this
 
-    int play();
+    int play(); //does this actually work
     int setTag();
     int quit();
     int taketurn();

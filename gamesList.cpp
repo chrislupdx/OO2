@@ -59,9 +59,12 @@ int gamesL::display()
     if(!rear)
     {
         std::cout << "empty gamelist" << std::endl;
-        return 0;
+        return 1;
     }
-    return display(rear->to_next());
+    std::cout << "displaying games: " << std::endl; 
+    display(rear->to_next());
+    std::cout << "display end" << std::endl;
+    return 0;
 }
 
 int gamesL::display(gameN * curr)
@@ -75,6 +78,16 @@ int gamesL::display(gameN * curr)
     curr->display();
 
     return display(curr->to_next());
+}
+
+//NOT DONE
+int gamesL::play()
+{
+    rear->play();
+    //plays the game on the top of the stack
+    //how about the other games?
+    return 1;
+
 }
 
 //add the node into the  CLL

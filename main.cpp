@@ -7,10 +7,15 @@ int main()
 {
     sys sys;
     game * rng = new rngGame; //trying to upcast
+    //rng->play(); //this works
+
     //gameN * newNode = new gameN(rng);
+    //newNode->play();   //working on this one
+    
     gamesL * gamel = new gamesL;
     gamel->add(rng);
     gamel->display();
+    gamel->play(); 
 
 
     //adding multiple games/displaying them
