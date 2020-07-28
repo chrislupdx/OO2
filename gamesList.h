@@ -18,7 +18,7 @@ class gamesL
         int display(gameN * rear);
        
     protected:
-        int delGame(int todel, gameN *& rear);
+        int delGame(int todel, gameN *& curr, gameN *& prev);
         
         int wins; //can we pass it to the 
         gameN * rear; //this is A CLL

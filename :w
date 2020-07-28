@@ -6,11 +6,12 @@
 int main()
 {
     sys sys;
-    //game * ygam = new rngGame; //trying to upcast
+    game * ygam = new rngGame; //trying to upcast
     //ygam->play(); //this works
 
-    //gameN * newNode = new gameN(ygam);
-    //newNode->play();   //working on this one
+    gameN * newNode = new gameN(ygam);
+    newNode->play();   //working on this one
+    
 
     //gamel->add(rng);
     //gamel->display();
@@ -74,7 +75,7 @@ int main()
       std::cin >>name2;
       std::cin.ignore(100,'\n');
      
-      gamel->delGame(name2);
+      //gamel->delGame(name2);
       gamel->display();
       
       std::cout << "delete another? y/n " << std::endl;

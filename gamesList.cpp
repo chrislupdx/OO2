@@ -26,9 +26,7 @@ int gamesL::removeAll()
 int gamesL::removeAll(gameN * rear)
 {
     if(!rear) return 0;
-    if(rear)
-    {
-        gameN * temp = rear->to_next();
+    if(rear) { gameN * temp = rear->to_next();
         delete rear;
         rear = temp;
     }
@@ -43,12 +41,49 @@ int gamesL::delGame(int namenumtodel)
         std::cout << "empty game list." << std::endl;
         return 0;
     } 
-   gameN * next = rear->to_next();
-    return delGame(namenumtodel, next); 
+   gameN * curr = rear->to_next();
+   gameN * prev = rear; 
+   return delGame(namenumtodel, curr, prev); 
 }
 
 //traverse then delete game
-int gamesL::delGame(int todel, gameN *& curr)
+//int gamesL::delGame(int todel, gameN *& curr)
+//{
+//    if(rear == curr)
+//    {
+//        int name = curr->get_name();
+//        if(todel == name)
+//        {
+//            gameN * temp = curr;
+//            curr = curr->to_next();
+//            delete temp;
+//            rear = NULL; //changed to curr from null return 1;
+//        }
+//        return 0;
+//    }
+//    int name = curr->get_name();
+//    if(todel == name)
+//    {
+//        //can we do this without dragging prev
+//        gameN * temp = curr;
+//        curr = curr->to_next(); //move fowward one
+//        delete temp;
+//        rear = NULL; //hrmmmm
+//        return 1; //ook you need to tuck the tail here
+//    }
+//    
+//    gameN * next = curr->to_next(); 
+//    delGame(todel, next);
+//    
+//    //if(rear == NULL) //does OTW condition ever go off when we need it to?
+//    //{
+//    //    rear = curr;
+//    //}
+//    return 1;
+//}
+
+//this is a wrapper
+int gamesL::delGame(int todel, gameN *& curr, gameN *& prev)
 {
     if(rear == curr)
     {
@@ -58,10 +93,10 @@ int gamesL::delGame(int todel, gameN *& curr)
             gameN * temp = curr;
             curr = curr->to_next();
             delete temp;
-            rear = NULL;
+            gameN * nextprev = prev->to_next();
+            nextprev = curr;
             return 1;
         }
-        return 0;
     }
     int name = curr->get_name();
     if(todel == name)
@@ -69,18 +104,18 @@ int gamesL::delGame(int todel, gameN *& curr)
         gameN * temp = curr;
         curr = curr->to_next();
         delete temp;
-        rear = NULL;  //what if we did it forcefully
-        return 1; //ook you need to tuck the tail here
+        gameN * nextprev = prev->to_next();
+        nextprev = curr;
+        return 1;
     }
-    
-    gameN * next = curr->to_next(); 
-    delGame(todel, next);
-    
-    if(rear == NULL) //does OTW condition ever go off when we need it to?
-    {
-        rear = curr;
-    }
-    return 1;
+    gameN * nextprev = prev->to_next();
+    gameN * tonext = curr->to_next();
+    delGame(todel, tonext, nextprev); 
+    //node * temp = curr;
+    //curr = curr->next();
+    //delete temp;
+    //previous->next() = curr;
+    return 0;
 }
 
 int gamesL::gatherWin()

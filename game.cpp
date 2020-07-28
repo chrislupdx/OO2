@@ -123,16 +123,15 @@ int rngGame::play()
 {
     std::cout << std::endl;
     std::cout << "playing RNGGame" << std::endl;
+    char name[20];
+    std::cout << "input name " << std::endl;
+    std::cin >> name;
+    std::cin.ignore(100,'\n');
+    setTag(name);
+    std::cout << "tag is : " << tag << std::endl;
     bool done = false;
     while(done == false)
     {
-        char name[20];
-        std::cout << "input name " << std::endl;
-        std::cin >> name;
-        std::cin.ignore(100,'\n');
-        setTag(name);
-        std::cout << "tag is : " << tag << std::endl;
-
         std::cout << "Roll? (y/n) No will exit and you will lose. " << std::endl;
         char response;
         std::cin >> response;
@@ -149,7 +148,6 @@ int rngGame::play()
             //quit(); //wrtie quit
         }
         std::cout << "you rolled : " << outcome << std::endl;
-
         //use take turn?
         if(outcome > 6) //wint if you roll 7+
         {
@@ -161,10 +159,21 @@ int rngGame::play()
             std::cout << "Lose. " << std::endl;
             win = false;
         }
-
-        taketurn(done);
+        std::cout << "play again? (y/n)" << std::endl;
+        char choice;
+        std::cin >> choice;
+        std::cin.ignore(100,'\n');
+        if(choice == 'Y' || choice == 'y')
+        {
+            std::cout << "MOAR" << std::endl;
+        }
+        else
+        {
+            done = false;
+            quit();
+            return 1;
+        }
     }
-    quit();
     return 1;
 }
 
@@ -230,7 +239,7 @@ int yum::play()
     setTag(name);
     std::cout << "tag is : " << tag << std::endl;
     std::cout << std::endl;
-    
+
     bool done5 = true;
     while(done5)
     {
@@ -249,21 +258,21 @@ int yum::play()
             std::cout << "lose" << std::endl;
             win = false;
         }
-    //int caatch = taketurn(done5); //this isn't passing right
-    std::cout << "play again? (y/n)" << std::endl;
-    char choice;
-    std::cin >> choice;
-    std::cin.ignore(100,'\n');
-    if(choice == 'Y' || choice == 'y')
-    {
-        std::cout << "MOAR" << std::endl;
-    }
-    else
-    {
-        done5 = false;
-        quit();
-        return 1;
-    }
+        //int caatch = taketurn(done5); //this isn't passing right
+        std::cout << "play again? (y/n)" << std::endl;
+        char choice;
+        std::cin >> choice;
+        std::cin.ignore(100,'\n');
+        if(choice == 'Y' || choice == 'y')
+        {
+            std::cout << "MOAR" << std::endl;
+        }
+        else
+        {
+            done5 = false;
+            quit();
+            return 1;
+        }
     }
     return 1;
 }
