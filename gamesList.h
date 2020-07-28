@@ -1,38 +1,39 @@
-//this is the implementation for a list of games, it manages a CLL that is comprised of 
-//base game nodes (it only serves/works with derived class games)
 #include "gameN.h"
 #include <cstring>
 #include <cstddef>
+
 class gamesL
 {
     public:
         gamesL();
         ~gamesL();
-        //sumWins();
-        //int add(game * newgame);  //how does this handle dynamic binding
-        int add(game * newGame); //im pretty sure I don't want this
+        int add(game * newGame);
         int removeAll();
         int display();
-        int countwins(); //goes through calls gatherwin and returns the sum
-        int play(); //plays game NOT DONE protected:
+        int delGame(int namenumtodel);
         int removeAll(gameN * rear);
+        int gatherWin(); //NOT DONE
+        int play(); //NOT DONE
+        //sumWins(); //NOT DONE
         int display(gameN * rear);
+       
+    protected:
+        int delGame(int todel, gameN *& rear);
+        
         int wins; //can we pass it to the 
         gameN * rear; //this is A CLL
 };
-//this is player.h, .cpp is @ player.cpp
+
 class player : public gamesL
 {
     public:
-    player();
-    ~player();
-    player(const player & player_toadd);
-    player(char * name); //this will expand as necessary
-    int compP(char * name); //returns 0 if match
-    int displayP();
-    //int createGame(char * choice, game *& newgame); //user decides what derived is created
-    //does a thing
+        player();
+        ~player();
+        player(const player & player_toadd);
+        player(char * name);
+        int compP(char * nametocp);
+        int displayP();
+        //int createGame(char * choice, game *& newgame);
     protected:
-    char * name;
-    //int score; //we coudl just use countwins
+        char * name;
 };

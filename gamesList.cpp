@@ -35,11 +35,64 @@ int gamesL::removeAll(gameN * rear)
     return removeAll(rear);
 }
 
+//wrapper function: find matching
+int gamesL::delGame(int namenumtodel)
+{
+    if(!rear)
+    {
+        std::cout << "empty game list." << std::endl;
+        return 0;
+    } 
+   gameN * next = rear->to_next();
+    return delGame(namenumtodel, next); 
+}
+
+//traverse then delete game
+int gamesL::delGame(int todel, gameN *& curr)
+{
+    if(rear == curr)
+    {
+        int name = curr->get_name();
+        if(todel == name)
+        {
+            gameN * temp = curr;
+            curr = curr->to_next();
+            delete temp;
+            rear = NULL;
+            return 1;
+        }
+        return 0;
+    }
+    int name = curr->get_name();
+    if(todel == name)
+    {
+        gameN * temp = curr;
+        curr = curr->to_next();
+        delete temp;
+        rear = NULL;  //what if we did it forcefully
+        return 1; //ook you need to tuck the tail here
+    }
+    
+    gameN * next = curr->to_next(); 
+    delGame(todel, next);
+    
+    if(rear == NULL) //does OTW condition ever go off when we need it to?
+    {
+        rear = curr;
+    }
+    return 1;
+}
+
+int gamesL::gatherWin()
+{
+    return 1;
+}
+
 
 //and to rear
 int gamesL::add(game * newN)
 {
-    //super boring cll insertion algorithmn
+    std::cout << "adding " << std::endl;
     if(!rear) //if empty /base case
     {
         rear = new gameN(newN);  //i think this is using gameN.cpp's upcasting constructor

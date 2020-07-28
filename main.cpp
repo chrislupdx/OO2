@@ -6,11 +6,11 @@
 int main()
 {
     sys sys;
-    //game * rng = new rngGame; //trying to upcast
-    //rng->play(); //this works
+    game * ygam = new yum; //trying to upcast
+    ygam->play(); //this works
 
-    //gameN * newNode = new gameN(rng);
-    //newNode->play();   //working on this one
+    gameN * newNode = new gameN(ygam);
+    newNode->play();   //working on this one
     
 
     //gamel->add(rng);
@@ -30,22 +30,28 @@ int main()
         int option; 
         std::cin >> option;
         std::cin.ignore(100,'\n');
+
+        std::cout << "number your game " << std::endl;
+        int nam;
+        std::cin >> nam;
+        std::cin.ignore(100,'\n');
+
         if(option == 1)
         {
             std::cout << "making a rngGame"<< std::endl;
-            game * rng = new rngGame;
+            game * rng = new rngGame(nam);
             gamel->add(rng);
         }
         if(option == 2)
         {
             std::cout << "making a yum" << std::endl;
-            game * y = new yum;
+            game * y = new yum(nam);
             gamel->add(y);
         }
         if(option == 3)
         {
             std::cout << "making a blackjack" << std::endl;
-            game * bj = new blackjack;
+            game * bj = new blackjack(nam);
             gamel->add(bj);
         }
         gamel->display();
@@ -59,44 +65,28 @@ int main()
         }
     };
     gamel->display();
-    //while(done2 == false) //testing retriving players
-    //{
-    //    std::cout << "retrieving" << std::endl;
-        //char name1[20];
-        //std::cin >>name1;
-        //std::cin.ignore(100,'\n');
-        //sys.retrievePlayer(name1);
-        //std::cout << "retrieve another? y/n " << std::endl;
-        //char yna;
-        //std::cin >> yna;
-        //std::cin.ignore(100,'\n');
-        //if(yna == 'n')
-        //{
-        //    done2 = true;
-        //}
-    //}
-    //while(done3 == false) //testing deleting players
-    //{
-        //std::cout << "deleting" << std::endl;
-        //sys.displayPlayers();
-        //std::cout << "enter name to delete: " << std::endl;
-        //char name2[20];
-        //std::cin >>name2;
-        //std::cin.ignore(100,'\n');
-        //sys.deletePlayer(name2);
-        //sys.displayPlayers(); 
-        //std::cout << "delete another? y/n " << std::endl;
-        //char ynd;
-        //std::cin >> ynd;
-        //std::cin.ignore(100,'\n');
-        //if(ynd == 'n')
-        //{
-        //    done3 = true;
-        //}
-    //}
-    //adding multiple games/displaying them
-    //playing more than one game in the CLL
-    //delete games from list
+    bool done2 = false;
+    while(done2 == false) //testing deleting games 
+    {
+      std::cout << "delete any games?" << std::endl;
+      gamel->display();
+      std::cout << "enter name to delete: " << std::endl;
+      int name2;
+      std::cin >>name2;
+      std::cin.ignore(100,'\n');
+     
+      //gamel->delGame(name2);
+      gamel->display();
+      
+      std::cout << "delete another? y/n " << std::endl;
+      char ynd;
+      std::cin >> ynd;
+      std::cin.ignore(100,'\n');
+      if(ynd == 'n')
+      {
+          done2 = true;
+      }
+    }
     //propogate win data
 
 

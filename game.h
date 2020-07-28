@@ -6,33 +6,39 @@ class game
     //parameteriazed constructor ?
     game();
     game(game * gtcp); //do we need to virtualize this in some way
+    game(int nametoadd);
     virtual ~game();
     virtual int play()=0; //pure virtual, can only make pointers via dynamic binding
-    virtual int quit()=0;
-    virtual int taketurn(); //check if we realllly want to virtualize it
+    virtual void quit()=0;
+    virtual int taketurn(bool & done)=0;
     virtual int setTag(char * name)=0;
     virtual int copy(game * gametcp)=0; //i think this needs to exist 
     int display(); //ugh god can we even call this
+   
+    int get_name();
+    char * get_tag();
+    bool get_win(); //converts win to a number
+    //int quit();//exit the loop + return data member
     
     //if(we need overloaded operators) implement here
     //derived_type * new_ptr = <dynamic_cast><derived_type *> (old_ptr);
     //getWinData();
-    protected:
-    char * gametype;
+    protected: int name;
     char * tag;
-    bool win;
+    bool win; //convert to int
 };
 
 class rngGame : public game
 {
     public:
         rngGame();
+        rngGame(int nametoadd);
         ~rngGame(); //but that's not an identical signature...does this work?
         //parameterized constructor 
         
         int play(); //can invoke quit/rollDie/setTag
-        int quit(); //exit the loop + return data bember:
-        //int taketurn();
+        void quit(); //exit the loop + return data bember:
+        int taketurn(bool & done);
         int setTag(char * name);
         //int static_cast<type*>pickCard();
         int rollDie();
@@ -45,10 +51,14 @@ class yum : public game
 {
     public:
         yum();
+        yum(int nametoadd);
         ~yum();
+        
+        int taketurn(bool & done);
         int play(); //NOT DONE 
-        int quit(); //not done
+        void quit();
         int setTag(char * name); //not done
+        int roll();
         int copy(game * gametcp); //not done
     private:
 };
@@ -60,11 +70,13 @@ class blackjack : public game
     //whoever has the bigger pile wins
     public:
         blackjack();
+        blackjack(int nametoadd);
         ~blackjack();
         int play(); //not done
-        int quit(); //not done
+        void quit(); //not done
         int setTag(char * name); //not done
         int copy(game * gametcp); //not done
+        int taketurn(bool & done);
 
     private:
 };

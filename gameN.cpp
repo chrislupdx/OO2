@@ -48,7 +48,7 @@ gameN::~gameN()
 
 int gameN::play()
 {
-    return aGame->play(); //well, let's see if it can dynamically bind right
+    return aGame->play();
 }
 
 int gameN::display()
@@ -56,7 +56,9 @@ int gameN::display()
     return aGame->display();
 }
 
-//gameN *& gameN::to_next() {return next; } 
+///int gameN::get_name() {return get_name(); } //this looks tautological
+int gameN::get_name() {return aGame->get_name();}
+
 gameN * gameN::to_next() {return next; }
 void gameN::set_next(gameN * next) {this->next = next;}
 game * gameN::r_game() {return aGame; }
