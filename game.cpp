@@ -46,8 +46,14 @@ game::~game()
 int game::display()
 {
     //displaying order in list would bedope but uncessary
+    if(name)
+    {
     std::cout << "Name: " << name << std::endl;
+    }
+    if(win)
+    {
     std::cout << "win? : " << win << std::endl;
+    }
     if(tag)
     {
         std::cout << "tag? : " << tag << std::endl;

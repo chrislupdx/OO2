@@ -46,77 +46,109 @@ int gamesL::delGame(int namenumtodel)
    return delGame(namenumtodel, curr, prev); 
 }
 
-//traverse then delete game
-//int gamesL::delGame(int todel, gameN *& curr)
+//this is a wrapper
+//int gamesL::delGame(int todel, gameN *& curr, gameN *& prev)
 //{
-//    if(rear == curr)
+//    if(this->rear == curr && this->rear == prev) 
+//    {
+//        int name= curr->get_name();
+//        
+//        if(todel == name) 
+//        {
+//        //gameN * temp = curr;
+//        //delete temp;
+//        delete this->rear;
+//        this->rear = NULL;
+//        //temp = NULL;
+//        return 1;
+//        }
+//    }
+//
+//    if(rear == curr) //base case
 //    {
 //        int name = curr->get_name();
 //        if(todel == name)
 //        {
 //            gameN * temp = curr;
 //            curr = curr->to_next();
+//            rear = curr;
 //            delete temp;
-//            rear = NULL; //changed to curr from null return 1;
+//            temp = NULL;
+//            prev->to_next() = curr; //attempts to take non-pointer value
+//            return 1;
 //        }
-//        return 0;
 //    }
 //    int name = curr->get_name();
 //    if(todel == name)
 //    {
-//        //can we do this without dragging prev
 //        gameN * temp = curr;
-//        curr = curr->to_next(); //move fowward one
-//        delete temp;
-//        rear = NULL; //hrmmmm
-//        return 1; //ook you need to tuck the tail here
+//        curr = curr->to_next();
+//        delete temp; //i don't know if this actually deleting the thing
+//        temp = NULL;
+//        prev->to_next() = curr;
+//        return 1;
 //    }
-//    
-//    gameN * next = curr->to_next(); 
-//    delGame(todel, next);
-//    
-//    //if(rear == NULL) //does OTW condition ever go off when we need it to?
-//    //{
-//    //    rear = curr;
-//    //}
-//    return 1;
+//    //gameN * nextprev = prev->to_next();
+//    //gameN * tonext = curr->to_next();
+//    delGame(todel, curr->to_next(), prev->to_next()); 
+//
+//    //node * temp = curr;
+//    //curr = curr->next();
+//    //delete temp;
+//    //previous->next() = curr;
+//    return 0;
 //}
 
-//this is a wrapper
-int gamesL::delGame(int todel, gameN *& curr, gameN *& prev)
+
+int gamesL::delGame(int todel, gameN *& rear, gameN *& prev)
 {
-    if(rear == curr)
+    if(this->rear == rear && rear->to_next() == rear) 
     {
-        int name = curr->get_name();
+        int name= rear->get_name();
+        
+        if(todel == name) 
+        {
+        delete this->rear; //do we need this kw
+        this->rear = NULL; 
+        return 1;
+        }
+    }
+
+    if(this->rear == rear) //base case
+    {
+        int name = rear->get_name();
         if(todel == name)
         {
-            gameN * temp = curr;
-            curr = curr->to_next();
+            gameN * temp = rear;
+            rear = rear->to_next();
+            this->rear = rear;
+            prev->to_next() = rear; //attempts to take non-pointer val
             delete temp;
-            gameN * nextprev = prev->to_next();
-            nextprev = curr;
+            temp = NULL;
             return 1;
         }
     }
-    int name = curr->get_name();
-    if(todel == name)
+    int name = rear->get_name();
+    if(todel == name)  //general case?
     {
-        gameN * temp = curr;
-        curr = curr->to_next();
-        delete temp;
-        gameN * nextprev = prev->to_next();
-        nextprev = curr;
+        gameN * temp = rear;
+        rear = rear->to_next();
+        prev->to_next() = rear;
+        delete temp; //i don't know if this actually deleting the thing
+        temp = NULL;
         return 1;
     }
-    gameN * nextprev = prev->to_next();
-    gameN * tonext = curr->to_next();
-    delGame(todel, tonext, nextprev); 
+    //gameN * nextprev = prev->to_next();
+    //gameN * tonext = curr->to_next();
+    delGame(todel, rear->to_next(), prev->to_next()); 
+
     //node * temp = curr;
     //curr = curr->next();
     //delete temp;
     //previous->next() = curr;
     return 0;
 }
+
 
 int gamesL::gatherWin()
 {
@@ -131,13 +163,16 @@ int gamesL::add(game * newN)
     if(!rear) //if empty /base case
     {
         rear = new gameN(newN);  //i think this is using gameN.cpp's upcasting constructor
-        rear->set_next(rear); 
+        rear->to_next() = rear;
+        //rear->set_next(rear); 
         return 0;
     }
     gameN * temp = new gameN(newN);
     gameN * front = rear->to_next();
-    rear->set_next(temp); //position temp behind rear
-    temp->set_next(front);
+    rear->to_next() = temp;
+    temp->to_next() = front;
+    //rear->set_next(temp); //position temp behind rear
+    //temp->set_next(front);
     rear = temp;
     return 1;
 }

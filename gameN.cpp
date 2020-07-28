@@ -53,12 +53,17 @@ int gameN::play()
 
 int gameN::display()
 {
+    if(aGame)
+    {
     return aGame->display();
+    }
+    //std::cout << "no game?" << std::endl;
+    return 0;
 }
 
 ///int gameN::get_name() {return get_name(); } //this looks tautological
 int gameN::get_name() {return aGame->get_name();}
 
-gameN * gameN::to_next() {return next; }
-void gameN::set_next(gameN * next) {this->next = next;}
+gameN *& gameN::to_next() {return next; }// changed back to *&
+//void gameN::set_next(gameN * next) {this->next = next;}
 game * gameN::r_game() {return aGame; }

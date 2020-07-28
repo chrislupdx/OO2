@@ -20,10 +20,10 @@ class gameN
     //check if get_win boolean logick to your way into getting nums
     //int gameN *& get_winData();
     
-    gameN * to_next();    
     void set_next(gameN * next);
     game * r_game();
     int get_name();
+    gameN *& to_next();    
     
     protected:
     int delGame(int * todel, gameN *& rear);
