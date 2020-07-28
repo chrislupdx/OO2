@@ -231,8 +231,8 @@ int yum::play()
     std::cout << "tag is : " << tag << std::endl;
     std::cout << std::endl;
     
-    bool done5 = false;
-    do 
+    bool done5 = true;
+    while(done5)
     {
         std::cout << "pick a number between 1-10" << std::endl;
         int housecore = roll();
@@ -249,23 +249,27 @@ int yum::play()
             std::cout << "lose" << std::endl;
             win = false;
         }
-    taketurn(done5); //this isn't passing right
+    //int caatch = taketurn(done5); //this isn't passing right
+    std::cout << "play again? (y/n)" << std::endl;
+    char choice;
+    std::cin >> choice;
+    std::cin.ignore(100,'\n');
+    if(choice == 'Y' || choice == 'y')
+    {
+        std::cout << "MOAR" << std::endl;
     }
-    while(done5 == false);
-    quit();
+    else
+    {
+        done5 = false;
+        quit();
+        return 1;
+    }
+    }
     return 1;
 }
 
 int yum::taketurn(bool & done)
 {
-    std::cout << "play again? (y/n)" << std::endl;
-    char choice;
-    std::cin >> choice;
-    std::cin.ignore(100,'\n');
-    if(choice == 'n')
-    {
-        done = true;
-    }
     return 1;
 }
 

@@ -7,9 +7,10 @@ int main()
 {
     sys sys;
     game * ygam = new yum; //trying to upcast
-    ygam->play(); //this works
+    //ygam->play(); //this works
 
     gameN * newNode = new gameN(ygam);
+    
     newNode->play();   //working on this one
     
 
