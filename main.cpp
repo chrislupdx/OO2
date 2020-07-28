@@ -15,12 +15,13 @@ int main()
     //gamel->add(rng);
     //gamel->display();
     //gamel->play(); 
-    bool done = false;
     //bool done2 = false;
     //bool done3 = false;
-    
-    gamesL * gamel = new gamesL;
-    while(done == false) //testing creating games
+
+    bool done3 = false;
+    player * np = new player;
+    //gamesL * gamel = new gamesL;
+    while(done3 == false) //testing creating games
     {
         std::cout << "create a game " << std::endl;
         std::cout << "what game would you like to create" << std::endl; 
@@ -39,43 +40,43 @@ int main()
         {
             std::cout << "making a rngGame"<< std::endl;
             game * rng = new rngGame(nam);
-            gamel->add(rng);
+            np->add(rng);
         }
         if(option == 2)
         {
             std::cout << "making a yum" << std::endl;
             game * y = new yum(nam);
-            gamel->add(y);
+            np->add(y);
         }
         if(option == 3)
         {
             std::cout << "making a blackjack" << std::endl;
             game * bj = new blackjack(nam);
-            gamel->add(bj);
+            np->add(bj);
         }
-        gamel->display();
+        np->display();
         std::cout << "insesrt another? y/n " << std::endl;
         char yn;
         std::cin >> yn;
         std::cin.ignore(100,'\n');
         if(yn == 'n')
         {
-            done = true;
+            done3 = true;
         }
     };
-    gamel->display();
+    np->display();
     bool done2 = false;
     while(done2 == false) //testing deleting games 
     {
       std::cout << "delete any games?" << std::endl;
-      gamel->display();
+      np->display();
       std::cout << "enter name to delete: " << std::endl;
       int name2;
       std::cin >>name2;
       std::cin.ignore(100,'\n');
      
-      gamel->delGame(name2);
-      gamel->display();
+      np->delGame(name2);
+      np->display();
       
       std::cout << "delete another? y/n " << std::endl;
       char ynd;
@@ -86,19 +87,81 @@ int main()
           done2 = true;
       }
     }
-    //propogate win data
 
-
+    //bool done3 = false;
+    //gamesL * gamel = new gamesL;
+    //while(done3 == false) //testing creating games
+    //{
+    //    std::cout << "create a game " << std::endl;
+    //    std::cout << "what game would you like to create" << std::endl; 
+    //    std::cout << "1: rngGame, 2: yum, 3: blackjack " <<std::endl;
+    //    std::cout << "input choice : " << std::endl;
+    //    int option; 
+    //    std::cin >> option;
+    //    std::cin.ignore(100,'\n');
+    //    std::cout << "number your game " << std::endl;
+    //    int nam;
+    //    std::cin >> nam;
+    //    std::cin.ignore(100,'\n');
+    //    if(option == 1)
+    //    {
+    //        std::cout << "making a rngGame"<< std::endl;
+    //        game * rng = new rngGame(nam);
+    //        gamel->add(rng);
+    //    }
+    //    if(option == 2)
+    //    {
+    //        std::cout << "making a yum" << std::endl;
+    //        game * y = new yum(nam);
+    //        gamel->add(y);
+    //    }
+    //    if(option == 3)
+    //    {
+    //        std::cout << "making a blackjack" << std::endl;
+    //        game * bj = new blackjack(nam);
+    //        gamel->add(bj);
+    //    }
+    //    gamel->display();
+    //    std::cout << "insesrt another? y/n " << std::endl;
+    //    char yn;
+    //    std::cin >> yn;
+    //    std::cin.ignore(100,'\n');
+    //    if(yn == 'n')
+    //    {
+    //        done3 = true;
+    //    }
+    //};
+    //gamel->display();
+    //bool done2 = false;
+    //while(done2 == false) //testing deleting games 
+    //{
+    //  std::cout << "delete any games?" << std::endl;
+    //  gamel->display();
+    //  std::cout << "enter name to delete: " << std::endl;
+    //  int name2;
+    //  std::cin >>name2;
+    //  std::cin.ignore(100,'\n');
+    // 
+    //  gamel->delGame(name2);
+    //  gamel->display();
+    //  
+    //  std::cout << "delete another? y/n " << std::endl;
+    //  char ynd;
+    //  std::cin >> ynd;
+    //  std::cin.ignore(100,'\n');
+    //  if(ynd == 'n')
+    //  {
+    //      done2 = true;
+    //  }
+    //}
 
     //if(typeid(*rng) == typeid(rngGame))
     //{
     //    std::cout << "this is an rnggame " << std::endl;
     //}
-
-
+    
     //bool done = false;
     //bool done2 = false;
-
     //SYS tests
     //while(done == false) //testing creating players in
     //{

@@ -19,6 +19,9 @@ class sys
     //delete a player by name
     int deletePlayer(char * name);
     int deletePlayer(playerN *& head, char * player_name);
+
+
+
     //int sortList();
     protected:
     playerN * head; //this is an LLL of players
