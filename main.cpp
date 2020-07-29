@@ -104,47 +104,58 @@ int main()
             }
         } 
         //sys.display(); display everybody's scores
-        std::cout << "select another player? y/n " << std::endl;
+        std::cout << "select another player (to make game)? y/n " << std::endl;
         char ayndi;
         std::cin >> ayndi;
         std::cin.ignore(100,'\n');
         if(ayndi == 'n')
         {
-           udone = true;
+            udone = true;
         }
     }
 
-    //needs an outer select players loop
-    //std::cout << "Deleting Games:" << std::endl;
-    //bool done6 = false;
-    //while (done6 == false)
-    //{
-    //    sys.displayPlayers();
-    //    std::cout << "Select a player: " << std::endl;
-    //    char name2[20];
-    //    std::cin >> name2;
-    //    std::cin.ignore(100,'\n');
-    //    //sys.retrievePlayer(name2);  //print the player's games
-    //    
-    //    int option = 0;
-    //    //sys.displayPlayers();
-    //    std::cout << "Select which game to delete by named #:" << std::endl;
-    //    std::cin >> option;
-    //    std::cin.ignore(100,'\n');
-    //    sys.deleteGame(name2, option);
+    std::cout << "Deleting Games:" << std::endl;
+    bool adone = false;
+    while(adone == false)
+    { 
+        bool done6 = false;
+        while (done6 == false)
+        {
+            sys.displayPlayers();
+            std::cout << "Select a player: " << std::endl;
+            char name2[20];
+            std::cin >> name2;
+            std::cin.ignore(100,'\n');
+            //sys.retrievePlayer(name2);  //print the player's games
 
-    //    sys.retrievePlayer(name2);
-    //    
-    //    
-    //    std::cout << "delete another game? y/n " << std::endl;
-    //    char yndi;
-    //    std::cin >> yndi;
-    //    std::cin.ignore(100,'\n');
-    //    if(yndi == 'n')
-    //    {
-    //        done4 = true;
-    //    }
-    //}
+            int option = 0;
+            //sys.displayPlayers();
+            std::cout << "Select which game to delete by named #:" << std::endl;
+            std::cin >> option;
+            std::cin.ignore(100,'\n');
+            sys.deleteGame(name2, option);
+
+            sys.retrievePlayer(name2);
+
+
+            std::cout << "delete another game? y/n " << std::endl;
+            char yndi;
+            std::cin >> yndi;
+            std::cin.ignore(100,'\n');
+            if(yndi == 'n')
+            {
+                done6 = true;
+            }
+        }
+        std::cout << "select another player (to del game)? y/n " << std::endl;
+        char ayndi;
+        std::cin >> ayndi;
+        std::cin.ignore(100,'\n');
+        if(ayndi == 'n')
+        {
+            adone = true;
+        }
+    }
 
     //needs an outer select players loop
     bool done5 = false;
