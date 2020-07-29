@@ -7,7 +7,7 @@ int main()
 {
     sys sys;
     bool done = false;
-    bool done2 = false;
+    //bool done2 = false;
     //bool done3 = false; 
     while(done == false) //testing creating players
     {
@@ -27,24 +27,24 @@ int main()
             done = true;
         }
     };
-    while(done2 == false) //testing retriving players
-    {
-        std::cout << "retrieving" << std::endl;
-        std::cout << "enter name to retrieve " << std::endl;
-        sys.displayPlayers(); 
-        char name1[20];
-        std::cin >>name1;
-        std::cin.ignore(100,'\n');
-        sys.retrievePlayer(name1);
-        std::cout << "retrieve another? y/n " << std::endl;
-        char yna;
-        std::cin >> yna;
-        std::cin.ignore(100,'\n');
-        if(yna == 'n')
-        {
-            done2 = true;
-        }
-    }
+    //while(done2 == false) //testing retriving players
+    //{
+    //    std::cout << "retrieving" << std::endl;
+    //    std::cout << "Enter name to retrieve:" << std::endl;
+    //    sys.displayPlayers(); 
+    //    char name1[20];
+    //    std::cin >>name1;
+    //    std::cin.ignore(100,'\n');
+    //    sys.retrievePlayer(name1);
+    //    std::cout << "retrieve another? y/n " << std::endl;
+    //    char yna;
+    //    std::cin >> yna;
+    //    std::cin.ignore(100,'\n');
+    //    if(yna == 'n')
+    //    {
+    //        done2 = true;
+    //    }
+    //}
     //while(done3 == false) //testing deleting players
     //{
     //    std::cout << "deleting" << std::endl;
@@ -64,9 +64,8 @@ int main()
     //        done3 = true;
     //    }
     //}
-
-    std::cout << "Making games: Select a player" << std::endl;
-    std::cout << "enter name to retrieve " << std::endl;
+    std::cout << std::endl;
+    std::cout << "Making games: Select a player to add to their gamelist:" << std::endl;
     sys.displayPlayers(); 
     char name1[20];
     std::cin >> name1;
@@ -102,11 +101,11 @@ int main()
 
     bool done5 = false;
     std::cout << std::endl;
-    std::cout << "Playing games: Select a player" << std::endl;
+    std::cout << "Playing games:" << std::endl;
     while(done5 == false) //game playing loop for players (this is for getting wins for players
     {
-        std::cout << "select a player " << std::endl;
-        sys.displayPlayers(); 
+        sys.displayPlayers();  
+        std::cout << "Select a player:" << std::endl;
         char name2[20];
         std::cin >> name2;
         std::cin.ignore(100,'\n');
@@ -120,14 +119,14 @@ int main()
         std::cin.ignore(100,'\n');
         if(ugh == 'n')
         {
-            done4 = true;
+            done5 = true;
         }
 
-
+    
+    
+    
     }
 
-    //play games 
-    //cycle through games
 
 
 

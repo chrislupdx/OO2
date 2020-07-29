@@ -48,7 +48,7 @@ int game::display()
     //displaying order in list would bedope but uncessary
     if(name)
     {
-    std::cout << "Name: " << name << std::endl;
+    std::cout << "Given #: " << name << std::endl;
     }
     if(win)
     {

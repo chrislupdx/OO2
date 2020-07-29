@@ -198,21 +198,19 @@ int gamesL::display(gameN * curr)
         std::cout << std::endl;
         return 0;
     }
-
     curr->display();
-
     return display(curr->to_next());
 }
 
-//NOT DONE
+//play the game then move the curr pointer down the list
 int gamesL::play()
 {
     rear->play();
-    //plays the game on the top of the stack
-    //is there a curr pointer that gets bumped down the list
+    //update wins
+    rear = rear->to_next(); //rotate to the next game
     return 1;
-
 }
+
 
 //add the node into the  CLL
 //int gamesL::add(gameN * newNode)

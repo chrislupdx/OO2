@@ -49,6 +49,7 @@ int playerN::displayN()
 
         std::cout << "now printing games" << std::endl;
         playerData->display();
+        std::cout << std::endl;
     }
     else
     {

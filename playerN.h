@@ -1,9 +1,7 @@
 //playerN.h
 //this is a node 
 #include "gamesList.h"
-
 //#include "player.h"
-
 class playerN 
 {
     public:

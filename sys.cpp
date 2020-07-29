@@ -40,8 +40,6 @@ int sys::playGame(playerN * head, char * name_tf)
 
     if(head->compare(name_tf) == 0)
     {
-        //if we wanted to do pointer shennanigans instead of rotating
-        //this is likely the surface of the water
         //head is playerN
         head->play(); //this function plays the game then r
     }
@@ -82,7 +80,7 @@ int sys::displayPlayers(playerN *& head)
 
 int sys::displayPlayers()
 {
-    std::cout << "displaying " << std::endl;
+    std::cout << "displaying " << std::endl << std::endl;
     displayPlayers(head);
     return 1;
 }
