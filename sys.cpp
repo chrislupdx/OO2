@@ -3,7 +3,26 @@
 sys::sys()
 {
     head = NULL; 
+    sortH = NULL; 
+} 
+
+//copies into empty //tries to do insertion sort
+int sys::sortList(playerN *& empty, playerN *& tocopy)
+{
+    playerN * buffer = new playerN; //it should fizzle out of scope after we're done right
+
+    //identify the smallest item
+    //int findSmallest(playerN *& tocopy)
+
+    //insert it
+    //remove it from the source list
+ 
+
+
+    insertPlayerN(sortedPlayer, empty);  //eol insetion
+    return 1;
 }
+
 
 //recursively deallocates all nodes
 int sys::removeAll(playerN *& head)
@@ -14,6 +33,25 @@ int sys::removeAll(playerN *& head)
 
     return 1;
 }
+
+int sys::updateWins()
+{
+    if(!head) return 0;
+   return updateWins(head);
+}
+
+//this one does ALL the players
+int sys::updateWins(playerN *& head)
+{
+    if(!head) return 0;
+    //a catch belo1...
+   int caught = head->updateWins();
+   //set the player's wins to caught
+    head->set_wins(caught);
+    return updateWins(head->to_next());
+}
+
+//write the singular version of that first
 
 //de-allocs the list
 int sys::removeAll()
@@ -45,7 +83,6 @@ int sys::deleteGame(playerN * head, char * nametf, int option)
 //wrapper
 int sys::playGame(char * name)
 {
-
     return playGame(head, name);
 }
 
@@ -61,7 +98,7 @@ int sys::playGame(playerN * head, char * name_tf)
     return playGame(head->to_next(), name_tf);
 }
 
-//recursively inserts a player into a LLL
+//EOL recursively inserts a player into a LLL
 int sys::insertPlayerN(player player_toadd, playerN *& head)
 {
     if(!head)
@@ -88,14 +125,13 @@ int sys::createPlayer(player player_toadd)
 int sys::displayPlayers(playerN *& head)
 {
     if(!head) return 0; 
-    head->displayN(); //man i want to virtualize display 
+    head->displayplayerstats(); //man i want to virtualize display 
     int count = displayPlayers(head->to_next()) + 1;
     return count;
 }
 
 int sys::displayPlayers()
 {
-    std::cout << "displaying " << std::endl << std::endl;
     displayPlayers(head);
     return 1;
 }
@@ -113,7 +149,7 @@ int sys::retrievePlayer(playerN * head, char * name_tf)
 
     if(head->compare(name_tf) == 0)
     {
-        head->displayN();
+        head->displayplayerstats();
     }
     return retrievePlayer(head->to_next(), name_tf);
 }

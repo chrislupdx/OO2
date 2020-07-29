@@ -20,6 +20,31 @@ playerN::~playerN()
     next = NULL; 
 } 
 
+int playerN::compW(playerN * Ptcp)
+{
+    if(playerData->compareWins(Ptcp->playerData) == 0)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+//gets all the wins for one person
+int playerN::updateWins()
+{
+    if(playerData)
+    {
+    return playerData->get_wins();
+    }
+    return 0;
+}
+
+int playerN::set_wins(int value)
+{
+    playerData->set_wins(value);
+    return 1;
+}
+
 //can we just touch the cll?
 int playerN::play()
 {
@@ -33,7 +58,6 @@ int playerN::deleteGame(int option)
 
 int playerN::addGame(game * gametoadd)
 {
-    //we are banking on the fact that playerData should have access to the cll
     return playerData->add(gametoadd);
 }
 
@@ -45,13 +69,13 @@ int playerN::displayPGList()
 
 playerN *& playerN::to_next() {return next; }
 
-//this is for displaying player games + other data
-int playerN::displayN()
+//this is for displaying One player's games + other data
+int playerN::displayplayerstats()
 {
     if(playerData)
     {
-        playerData->displayP();
-
+        //trying to aggregate wins through these
+        playerData->displayPlayername(); 
         std::cout << "now printing games" << std::endl;
         playerData->display();
         std::cout << std::endl;

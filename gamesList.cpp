@@ -16,16 +16,32 @@ gamesL::~gamesL()
     }
 }
 
+//if the calling class is bigger or equal, return 1
+int gamesL::compareWins(gamesL * listtocompare)
+{
+    if(this->wins >= listtocompare->wins)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int gamesL::set_wins(int value)
+{
+    wins = value;
+    return 1;
+}
+
 //go through the whole list and sum wins
 int gamesL::sumWins()
 {
-    return sumWins(rear);
+    return sumWins(rear->to_next());
 }
 
 //recursively move through gamesList, calling and summing wins per game
 int gamesL::sumWins(gameN * rear)
 {
-    if(this->rear == rear)
+    if(this->rear == rear) //might need guards
     {
         return rear->gatherWin();
     }
@@ -33,14 +49,11 @@ int gamesL::sumWins(gameN * rear)
     //put it somehwhere
 }
 
-//calls sum wins + sets wins
-int gamesL::gatherWins()
-{
+int gamesL::get_wins() 
+{ 
     wins = sumWins();
-    return 1;
+    return wins;
 }
-
-int gamesL::get_wins() { return wins; }
 
 //needs to be implemented
 int gamesL::removeAll()
@@ -52,7 +65,9 @@ int gamesL::removeAll()
 int gamesL::removeAll(gameN * rear)
 {
     if(!rear) return 0;
-    if(rear) { gameN * temp = rear->to_next();
+    if(rear) 
+    { 
+        gameN * temp = rear->to_next();
         delete rear;
         rear = temp;
     }
@@ -67,9 +82,9 @@ int gamesL::delGame(int namenumtodel)
         std::cout << "empty game list." << std::endl;
         return 0;
     } 
-   gameN * curr = rear->to_next();
-   gameN * prev = rear; 
-   return delGame(namenumtodel, curr, prev); 
+    gameN * curr = rear->to_next();
+    gameN * prev = rear; 
+    return delGame(namenumtodel, curr, prev); 
 }
 
 //this is a wrapper
@@ -125,18 +140,17 @@ int gamesL::delGame(int namenumtodel)
 //    return 0;
 //}
 
-
 int gamesL::delGame(int todel, gameN *& rear, gameN *& prev)
 {
     if(this->rear == rear && rear->to_next() == rear) 
     {
         int name= rear->get_name();
-        
+
         if(todel == name) 
         {
-        delete this->rear; //do we need this kw
-        this->rear = NULL; 
-        return 1;
+            delete this->rear; //do we need this kw
+            this->rear = NULL; 
+            return 1;
         }
     }
 
@@ -175,9 +189,6 @@ int gamesL::delGame(int todel, gameN *& rear, gameN *& prev)
     return 0;
 }
 
-
-
-
 //and to rear
 int gamesL::add(game * newN)
 {
@@ -201,6 +212,10 @@ int gamesL::add(game * newN)
 
 int gamesL::display()
 {
+    if(wins)
+    {
+        std::cout << "Wins :" << wins << std::endl;
+    }
     if(!rear)
     {
         std::cout << "empty gamelist" << std::endl;

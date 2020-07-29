@@ -13,10 +13,11 @@ public:
     int delGame(int namenumtodel);
     int removeAll(gameN * rear);
     int play(); 
-    int sumWins();
     int display(gameN * rear);
-    int gatherWins(); //sums+sets wins
-    int get_wins(); //for the client
+    int compareWins(gamesL * listtocompare);
+    int sumWins(); //goes through the list and gets all of them
+    int get_wins(); //for the client (does it actually grab all of them)
+    int set_wins(int value);
 protected:
     int delGame(int todel, gameN *& rear, gameN *& prev);
     int sumWins(gameN * rear);
@@ -32,8 +33,7 @@ public:
     player(const player & player_toadd);
     player(char * name);
     int compP(char * nametocp);
-    int displayP();  //what does that actually do
-        //int createGame(char * choice, game *& newgame);
+    int displayPlayername();  //what does that actually do
     protected:
         char * name;
 };

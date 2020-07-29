@@ -46,6 +46,7 @@ gameN::~gameN()
     aGame = NULL;
 }
 
+
 //bool->int conversion of wins
 int gameN::gatherWin()
 {

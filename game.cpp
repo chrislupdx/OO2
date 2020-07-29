@@ -299,8 +299,6 @@ yum::~yum()
 }
 
 
-
-
 int yum::setTag(char * name)
 {
     tag = new char[strlen(name) + 1];

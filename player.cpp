@@ -33,7 +33,7 @@ player::~player()
 }
 
 //display
-int player::displayP()
+int player::displayPlayername()
 {
     if(name)
     {    
