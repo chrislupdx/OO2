@@ -32,7 +32,7 @@ public:
     player(const player & player_toadd);
     player(char * name);
     int compP(char * nametocp);
-    int displayP();
+    int displayP();  //what does that actually do
         //int createGame(char * choice, game *& newgame);
     protected:
         char * name;

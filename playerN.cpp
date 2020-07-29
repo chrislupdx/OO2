@@ -34,11 +34,15 @@ int playerN::displayPData()
 
 playerN *& playerN::to_next() {return next; }
 
+//this is for displaying player games + other data
 int playerN::displayN()
 {
     if(playerData)
     {
         playerData->displayP();
+
+        std::cout << "now printing games" << std::endl;
+        playerData->display();
     }
     else
     {
