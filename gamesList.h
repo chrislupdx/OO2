@@ -17,7 +17,6 @@ public:
     int display(gameN * rear);
     int gatherWins(); //sums+sets wins
     int get_wins(); //for the client
-    //getter for wins?
 protected:
     int delGame(int todel, gameN *& rear, gameN *& prev);
     int sumWins(gameN * rear);

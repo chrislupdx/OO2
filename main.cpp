@@ -65,39 +65,56 @@ int main()
     //    }
     //}
     std::cout << std::endl;
+
     std::cout << "Making games: Select a player to add to their gamelist:" << std::endl;
-    sys.displayPlayers(); 
-    char name1[20];
-    std::cin >> name1;
-    std::cin.ignore(100,'\n');
-
-    bool done4 = false;
-    while(done4 == false) //this loop is for making games for specific players
+    bool udone = false;
+    while(udone == false) //this loop is for selecting players to play through their gamelists
     {
-        std::cout << "Select a game to create (1 rngGame /2 matching /3 blackjack)" << std::endl;
-        std::cout << "Input choice : " << std::endl;
-        int option; 
-        std::cin >> option;
+        //start here 
+        sys.displayPlayers(); 
+        char name1[20];
+        std::cin >> name1;
         std::cin.ignore(100,'\n');
 
-        std::cout << "number your game " << std::endl;
-        int nam;
-        std::cin >> nam;
-        std::cin.ignore(100,'\n');
-
-        //this iso ur create game loop
-        sys.addGame(name1, option, nam);  //its iether only writing over head instead of pushing into it
-        sys.retrievePlayer(name1); //its' either only displaying one
-
-        std::cout << "add another game to this player? y/n " << std::endl;
-        char yndi;
-        std::cin >> yndi;
-        std::cin.ignore(100,'\n');
-        if(yndi == 'n')
+        bool done4 = false;
+        while(done4 == false) //this loop is for making games for specific players
         {
-            done4 = true;
+            std::cout << "Select a game to create (1 rngGame /2 matching /3 blackjack)" << std::endl;
+            std::cout << "Input choice : " << std::endl;
+            int option; 
+            std::cin >> option;
+            std::cin.ignore(100,'\n');
+
+            std::cout << "number your game " << std::endl;
+            int nam;
+            std::cin >> nam;
+            std::cin.ignore(100,'\n');
+
+            //this iso ur create game loop
+            sys.addGame(name1, option, nam);
+            sys.retrievePlayer(name1); 
+
+            std::cout << "add another game to this player? y/n " << std::endl;
+            char yndi;
+            std::cin >> yndi;
+            std::cin.ignore(100,'\n');
+            if(yndi == 'n')
+            {
+                done4 = true;
+            }
+        } 
+        //sys.display(); display everybody's scores
+        std::cout << "select another player? y/n " << std::endl;
+        char ayndi;
+        std::cin >> ayndi;
+        std::cin.ignore(100,'\n');
+        if(ayndi == 'n')
+        {
+           udone = true;
         }
-    } 
+    }
+
+    //needs an outer select players loop
     //std::cout << "Deleting Games:" << std::endl;
     //bool done6 = false;
     //while (done6 == false)
@@ -129,6 +146,7 @@ int main()
     //    }
     //}
 
+    //needs an outer select players loop
     bool done5 = false;
     std::cout << std::endl;
     std::cout << "Playing games:" << std::endl;
@@ -139,7 +157,7 @@ int main()
         char name2[20];
         std::cin >> name2;
         std::cin.ignore(100,'\n');
-        sys.retrievePlayer(name1);
+        sys.retrievePlayer(name2);
         sys.playGame(name2);
 
         std::cout << "play another game? y/n " << std::endl;
@@ -152,9 +170,8 @@ int main()
             done5 = true;
         }
     }
-
+    //sorts list
     sys.displayPlayers();
-    //print player wins
 
 
 
