@@ -16,6 +16,32 @@ gamesL::~gamesL()
     }
 }
 
+//go through the whole list and sum wins
+int gamesL::sumWins()
+{
+    return sumWins(rear);
+}
+
+//recursively move through gamesList, calling and summing wins per game
+int gamesL::sumWins(gameN * rear)
+{
+    if(this->rear == rear)
+    {
+        return rear->gatherWin();
+    }
+    return sumWins(rear->to_next()) + rear->gatherWin();
+    //put it somehwhere
+}
+
+//calls sum wins + sets wins
+int gamesL::gatherWins()
+{
+    wins = sumWins();
+    return 1;
+}
+
+int gamesL::get_wins() { return wins; }
+
 //needs to be implemented
 int gamesL::removeAll()
 {
@@ -150,10 +176,6 @@ int gamesL::delGame(int todel, gameN *& rear, gameN *& prev)
 }
 
 
-int gamesL::gatherWin()
-{
-    return 1;
-}
 
 
 //and to rear

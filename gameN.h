@@ -14,7 +14,7 @@ class gameN
     int quit();
     int taketurn();
     int display();
-    int gatherWin(); //checks if win returns 
+    int gatherWin(); //returns wins as integers
     void set_next(gameN * next);
     game * r_game();
     int get_name();

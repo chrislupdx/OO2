@@ -37,7 +37,8 @@ int playerN::addGame(game * gametoadd)
     return playerData->add(gametoadd);
 }
 
-int playerN::displayPData()
+//displays the gamelist
+int playerN::displayPGList()
 {
     return playerData->display();
 }

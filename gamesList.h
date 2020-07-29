@@ -12,14 +12,15 @@ public:
     int display();
     int delGame(int namenumtodel);
     int removeAll(gameN * rear);
-    int gatherWin(); //NOT DONE
-    int play(); //NOT DONE
-    //sumWins(); //NOT DONE
+    int play(); 
+    int sumWins();
     int display(gameN * rear);
-   
+    int gatherWins(); //sums+sets wins
+    int get_wins(); //for the client
+    //getter for wins?
 protected:
     int delGame(int todel, gameN *& rear, gameN *& prev);
-    
+    int sumWins(gameN * rear);
     int wins; //can we pass it to the 
     gameN * rear; //this is A CLL
 };

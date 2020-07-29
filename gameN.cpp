@@ -46,6 +46,16 @@ gameN::~gameN()
     aGame = NULL;
 }
 
+//bool->int conversion of wins
+int gameN::gatherWin()
+{
+  if(aGame->get_win() == true)
+  {
+    return 1; //literally counting ones
+  }
+  return 0;
+}
+
 int gameN::play()
 {
     return aGame->play();

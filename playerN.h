@@ -14,7 +14,7 @@ class playerN
     int compare(char * name_tocp);
     int displayN();
     int play(); //not sure what args this needs
-    int displayPData(); //display player data
+    int displayPGList(); //displays the gamelist
     int addGame(game * gametoadd); //wrapper 
     int deleteGame(int option);
 
