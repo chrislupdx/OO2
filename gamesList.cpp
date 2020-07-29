@@ -195,6 +195,7 @@ int gamesL::display(gameN * curr)
     if(curr == rear)
     {
         curr->display();
+        std::cout << std::endl;
         return 0;
     }
 

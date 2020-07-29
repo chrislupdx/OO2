@@ -20,6 +20,18 @@ playerN::~playerN()
     next = NULL; 
 } 
 
+
+int playerN::addGame(game * gametoadd)
+{
+    //we are banking on the fact that playerData should have access to the cll
+    return playerData->add(gametoadd);
+}
+
+int playerN::displayPData()
+{
+    return playerData->display();
+}
+
 playerN *& playerN::to_next() {return next; }
 
 int playerN::displayN()

@@ -1,12 +1,9 @@
 #include "sys.h"
 #include <iostream>
-
 sys::sys()
 {
     head = NULL; 
 }
-
-//init list for sy
 
 //recursively deallocates all nodes
 int sys::removeAll(playerN *& head)
@@ -40,7 +37,7 @@ int sys::insertPlayerN(player player_toadd, playerN *& head)
     }
     else
     {
-       insertPlayerN(player_toadd, head->to_next()); 
+        insertPlayerN(player_toadd, head->to_next()); 
     }
     return 1;
 }
@@ -69,12 +66,6 @@ int sys::displayPlayers()
     return 1;
 }
 
-//find and match by name (NEEDS A GETTER)
-//int sys::retrievePlayer(player * player_tf)
-//{
-//    return retrievePlayer(head, player_tf->name);    
-//}
-
 //overloaded version takes a char
 int sys::retrievePlayer(char * player_name)
 {
@@ -85,12 +76,45 @@ int sys::retrievePlayer(char * player_name)
 int sys::retrievePlayer(playerN * head, char * name_tf)
 {
     if(!head) return 0;
-    
+
     if(head->compare(name_tf) == 0)
     {
         head->displayN();
     }
     return retrievePlayer(head->to_next(), name_tf);
+}
+
+//creates a game, and passes it to the recursive call
+int sys::addGame(char * player_name, int option, int nam)
+{
+    if(option == 1)
+    {
+        game * rng = new rngGame(nam); //why can't I do this here?
+        return addGame(head, player_name, rng);
+    }
+    if(option == 2)
+    {
+        game * y = new yum(nam);
+        return addGame(head, player_name, y);
+    }
+    if(option == 3)
+    {
+        game * bj = new blackjack(nam);
+        return addGame(head, player_name, bj);  //chef's kiss i am so proud of this function
+    }
+    return 1;
+}
+
+//find the right player and add it
+int sys::addGame(playerN * head, char * name_tf, game *& gameta)
+{
+    if(!head) return 0;
+
+    if(head->compare(name_tf) == 0)
+    {
+        head->addGame(gameta);
+    }
+    return addGame(head->to_next(), name_tf, gameta);
 }
 
 int sys::deletePlayer(char * player_name)

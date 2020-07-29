@@ -38,7 +38,16 @@ int player::displayP()
     if(name)
     {    
         std::cout << "Player " << name << std::endl;
+        if(wins)
+        {
         std::cout << "Score : " << wins << std::endl;
+        }
+        //display games
+        if(rear)
+        {
+            std::cout << "Displaying Games: " << std::endl;
+            rear->display();
+        }
     }
     else
     {

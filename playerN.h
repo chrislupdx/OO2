@@ -14,10 +14,10 @@ class playerN
     ~playerN();
     int copyN(playerN * playerN_tocopy);
     int compare(char * name_tocp);
-
     int displayN();
-    //setplayerN();
-    //playgame
+    //int play(); //not sure what args this needs
+    int displayPData(); //display player data
+    int addGame(game * gametoadd); //wrapper 
 
     protected:
     player * playerData; //player is a derived class of gamesL

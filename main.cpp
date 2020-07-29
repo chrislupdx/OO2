@@ -8,8 +8,8 @@ int main()
     sys sys;
     bool done = false;
     bool done2 = false;
-    bool done3 = false; 
-    while(done == false) //testing creating players in
+    //bool done3 = false; 
+    while(done == false) //testing creating players
     {
         std::cout << "create a player " << std::endl;
         char name[20];
@@ -45,48 +45,57 @@ int main()
             done2 = true;
         }
     }
-    while(done3 == false) //testing deleting players
-    {
-        std::cout << "deleting" << std::endl;
-        sys.displayPlayers();
-        std::cout << "enter name to delete: " << std::endl;
-        char name2[20];
-        std::cin >>name2;
-        std::cin.ignore(100,'\n');
-        sys.deletePlayer(name2);
-        sys.displayPlayers(); 
-        std::cout << "delete another? y/n " << std::endl;
-        char ynd;
-        std::cin >> ynd;
-        std::cin.ignore(100,'\n');
-        if(ynd == 'n')
-        {
-            done3 = true;
-        }
-    }
+    //while(done3 == false) //testing deleting players
+    //{
+    //    std::cout << "deleting" << std::endl;
+    //    sys.displayPlayers();
+    //    std::cout << "enter name to delete: " << std::endl;
+    //    char name2[20];
+    //    std::cin >>name2;
+    //    std::cin.ignore(100,'\n');
+    //    sys.deletePlayer(name2);
+    //    sys.displayPlayers(); 
+    //    std::cout << "delete another? y/n " << std::endl;
+    //    char ynd;
+    //    std::cin >> ynd;
+    //    std::cin.ignore(100,'\n');
+    //    if(ynd == 'n')
+    //    {
+    //        done3 = true;
+    //    }
+    //}
 
-    //select a player to create games for
-    //play those games
-    //display list of players and score
+    std::cout << "Making games: Select a player" << std::endl;
+    std::cout << "enter name to retrieve " << std::endl;
+    sys.displayPlayers(); 
+
+    char name1[20];
+    std::cin >> name1;
+    std::cin.ignore(100,'\n');
+
+    std::cout << "Select a game to create (1 rngGame /2 matching /3 blackjack)" << std::endl;
+    std::cout << "Input choice : " << std::endl;
+    int option; 
+    std::cin >> option;
+    std::cin.ignore(100,'\n');
+
+    std::cout << "number your game " << std::endl;
+    int nam;
+    std::cin >> nam;
+    std::cin.ignore(100,'\n');
    
-    //game * ygam = new rngGame; //trying to upcast
-    //ygam->play(); //this works
-
-    //gameN * newNode = new gameN(ygam);
-    //newNode->play();   //working on this one
-
-    //gamel->add(rng);
-    //gamel->display();
-    //gamel->play(); 
-    //bool done2 = false;
-    //bool done3 = false;
-
+    //this iso ur create game loop
+    sys.addGame(name1, option, nam); 
+    sys.retrievePlayer(name1);
+    
+    //display a player + games + info
+    //play games 
+    //cycle through games
     
 
 
-
-    //bool done3 = false; //TESTING THE PLAYER LAYER
-    //player * np = new player;
+    //bool done3 = false; 
+    ////player * np = new player;
     ////gamesL * gamel = new gamesL;
     //while(done3 == false) //testing creating games
     //{
@@ -102,7 +111,6 @@ int main()
     //    int nam;
     //    std::cin >> nam;
     //    std::cin.ignore(100,'\n');
-
     //    if(option == 1)
     //    {
     //        std::cout << "making a rngGame"<< std::endl;
@@ -154,6 +162,27 @@ int main()
     //      done2 = true;
     //  }
     //}
+
+
+    //player game deletion loop
+    //play loop those games
+    //display list of players and score
+
+    //game * ygam = new rngGame; //trying to upcast
+    //ygam->play(); //this works
+
+    //gameN * newNode = new gameN(ygam);
+    //newNode->play();   //working on this one
+
+    //gamel->add(rng);
+    //gamel->display();
+    //gamel->play(); 
+    //bool done2 = false;
+    //bool done3 = false;
+
+
+
+
 
     //bool done3 = false; //TEST FOR CLL LAYER
     //gamesL * gamel = new gamesL;
@@ -226,11 +255,11 @@ int main()
     //{
     //    std::cout << "this is an rnggame " << std::endl;
     //}
-    
+
     //bool done = false;
     //bool done2 = false;
     //SYS tests
-    
+
 
     return 1;
 }

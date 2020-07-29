@@ -6,21 +6,21 @@ class sys
     public:
     sys();
     ~sys();
-    //create is insert
     int createPlayer(player name); //hopefully calls player's parameterized cosntructor
-    //inserts a plyaer into a LLL
     int insertPlayerN(player player_toadd, playerN *& head);
-    //displayPlayerList
     int displayPlayers();
-    //retrieve a player by name
-    int retrievePlayer(char * player_name); //takes a char
+    int displayPData(char * player_name);
+    int retrievePlayer(char * player_name);
     int retrievePlayer(playerN * head, char * name_tf);  //recursive call
-    //delete a player by name
+    int addGame(char * player_name, int option, int nam); 
+    int addGame(playerN * head, char * name_tf, game *& gameta); //this call passes the player by re
     int deletePlayer(char * name);
     int deletePlayer(playerN *& head, char * player_name);
-
-    //int sortList();
+    
+    //int sortList(); //goes through the list of players and inserting them in sorted order to sortH
     protected:
+    
+    int addGame(char * player_name, game * gametoa); 
     playerN * head; //this is an LLL of players
     //playerN * sortH; //this is the sorted one
     int removeAll(playerN *& head);
