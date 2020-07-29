@@ -99,7 +99,7 @@ int sys::addGame(char * player_name, int option, int nam)
     }
     if(option == 3)
     {
-        game * bj = new blackjack(nam);
+        game * bj = new blackjack(nam); //do these fizzle out of scope immediately? once we finish adding....
         return addGame(head, player_name, bj);  //chef's kiss i am so proud of this function
     }
     return 1;

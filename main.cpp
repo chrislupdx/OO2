@@ -66,6 +66,7 @@ int main()
     //}
 
     std::cout << "Making games: Select a player" << std::endl;
+    bool done4 = false;
     std::cout << "enter name to retrieve " << std::endl;
     sys.displayPlayers(); 
 
@@ -73,25 +74,36 @@ int main()
     std::cin >> name1;
     std::cin.ignore(100,'\n');
 
-    std::cout << "Select a game to create (1 rngGame /2 matching /3 blackjack)" << std::endl;
-    std::cout << "Input choice : " << std::endl;
-    int option; 
-    std::cin >> option;
-    std::cin.ignore(100,'\n');
+    while(done4 == false) //this loop is for making games for specific players
+    {
+        std::cout << "Select a game to create (1 rngGame /2 matching /3 blackjack)" << std::endl;
+        std::cout << "Input choice : " << std::endl;
+        int option; 
+        std::cin >> option;
+        std::cin.ignore(100,'\n');
 
-    std::cout << "number your game " << std::endl;
-    int nam;
-    std::cin >> nam;
-    std::cin.ignore(100,'\n');
-   
-    //this iso ur create game loop
-    sys.addGame(name1, option, nam); 
-    sys.retrievePlayer(name1);
-    
+        std::cout << "number your game " << std::endl;
+        int nam;
+        std::cin >> nam;
+        std::cin.ignore(100,'\n');
+
+        //this iso ur create game loop
+        sys.addGame(name1, option, nam);  //its iether only writing over head instead of pushing into it
+        sys.retrievePlayer(name1); //its' either only displaying one
+
+        std::cout << "add another game to this player? y/n " << std::endl;
+        char yndi;
+        std::cin >> yndi;
+        std::cin.ignore(100,'\n');
+        if(yndi == 'n')
+        {
+            done4 = true;
+        }
+    } 
     //display a player + games + info
     //play games 
     //cycle through games
-    
+
 
 
     //bool done3 = false; 
