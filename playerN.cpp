@@ -20,6 +20,12 @@ playerN::~playerN()
     next = NULL; 
 } 
 
+//can we just touch the cll?
+int playerN::play()
+{
+    return playerData->play();
+}
+
 
 int playerN::addGame(game * gametoadd)
 {

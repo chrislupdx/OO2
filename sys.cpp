@@ -27,6 +27,27 @@ sys::~sys()
     removeAll();
 }
 
+//wrapper
+int sys::playGame(char * name)
+{
+    return playGame(head, name);
+}
+
+//finds the player
+int sys::playGame(playerN * head, char * name_tf)
+{
+    if(!head) return 0;
+
+    if(head->compare(name_tf) == 0)
+    {
+        //if we wanted to do pointer shennanigans instead of rotating
+        //this is likely the surface of the water
+        //head is playerN
+        head->play(); //this function plays the game then r
+    }
+    return playGame(head->to_next(), name_tf);
+}
+
 //recursively inserts a player into a LLL
 int sys::insertPlayerN(player player_toadd, playerN *& head)
 {
@@ -89,7 +110,7 @@ int sys::addGame(char * player_name, int option, int nam)
 {
     if(option == 1)
     {
-        game * rng = new rngGame(nam); //why can't I do this here?
+        game * rng = new rngGame(nam);
         return addGame(head, player_name, rng);
     }
     if(option == 2)
@@ -99,8 +120,8 @@ int sys::addGame(char * player_name, int option, int nam)
     }
     if(option == 3)
     {
-        game * bj = new blackjack(nam); //do these fizzle out of scope immediately? once we finish adding....
-        return addGame(head, player_name, bj);  //chef's kiss i am so proud of this function
+        game * bj = new blackjack(nam);
+        return addGame(head, player_name, bj);
     }
     return 1;
 }

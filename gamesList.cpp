@@ -209,7 +209,7 @@ int gamesL::play()
 {
     rear->play();
     //plays the game on the top of the stack
-    //how about the other games?
+    //is there a curr pointer that gets bumped down the list
     return 1;
 
 }

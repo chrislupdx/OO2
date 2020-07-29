@@ -1,7 +1,6 @@
 //this is the implementation of the game node file
 //gameN.h
 #include "game.h"
-
 class gameN
 {
     public:
@@ -15,11 +14,7 @@ class gameN
     int quit();
     int taketurn();
     int display();
-
     int gatherWin(); //checks if win returns 
-    //check if get_win boolean logick to your way into getting nums
-    //int gameN *& get_winData();
-    
     void set_next(gameN * next);
     game * r_game();
     int get_name();
@@ -27,7 +22,6 @@ class gameN
     
     protected:
     int delGame(int * todel, gameN *& rear);
-    
     gameN * next;
     game * aGame; //each gameN houses one instance of a game
 };

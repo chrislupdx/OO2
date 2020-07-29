@@ -15,7 +15,7 @@ class playerN
     int copyN(playerN * playerN_tocopy);
     int compare(char * name_tocp);
     int displayN();
-    //int play(); //not sure what args this needs
+    int play(); //not sure what args this needs
     int displayPData(); //display player data
     int addGame(game * gametoadd); //wrapper 
 

@@ -16,10 +16,10 @@ class sys
     int addGame(playerN * head, char * name_tf, game *& gameta); //this call passes the player by re
     int deletePlayer(char * name);
     int deletePlayer(playerN *& head, char * player_name);
-    
+    int playGame(char * name); //plays the top game of that person, then rotates    
     //int sortList(); //goes through the list of players and inserting them in sorted order to sortH
     protected:
-    
+    int playGame(playerN * head, char * player_name); 
     int addGame(char * player_name, game * gametoa); 
     playerN * head; //this is an LLL of players
     //playerN * sortH; //this is the sorted one

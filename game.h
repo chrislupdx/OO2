@@ -14,7 +14,6 @@ class game
     virtual int setTag(char * name)=0;
     virtual int copy(game * gametcp)=0; //i think this needs to exist 
     int display(); //ugh god can we even call this
-   
     int get_name();
     char * get_tag();
     bool get_win(); //converts win to a number

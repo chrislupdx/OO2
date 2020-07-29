@@ -66,14 +66,13 @@ int main()
     //}
 
     std::cout << "Making games: Select a player" << std::endl;
-    bool done4 = false;
     std::cout << "enter name to retrieve " << std::endl;
     sys.displayPlayers(); 
-
     char name1[20];
     std::cin >> name1;
     std::cin.ignore(100,'\n');
 
+    bool done4 = false;
     while(done4 == false) //this loop is for making games for specific players
     {
         std::cout << "Select a game to create (1 rngGame /2 matching /3 blackjack)" << std::endl;
@@ -100,7 +99,33 @@ int main()
             done4 = true;
         }
     } 
-    //display a player + games + info
+
+    bool done5 = false;
+    std::cout << std::endl;
+    std::cout << "Playing games: Select a player" << std::endl;
+    while(done5 == false) //game playing loop for players (this is for getting wins for players
+    {
+        std::cout << "select a player " << std::endl;
+        sys.displayPlayers(); 
+        char name2[20];
+        std::cin >> name2;
+        std::cin.ignore(100,'\n');
+        sys.retrievePlayer(name1);
+        sys.playGame(name2);
+
+        std::cout << "player another gamey/n " << std::endl;
+        //display player win score
+        char ugh;
+        std::cin >> ugh;
+        std::cin.ignore(100,'\n');
+        if(ugh == 'n')
+        {
+            done4 = true;
+        }
+
+
+    }
+
     //play games 
     //cycle through games
 
