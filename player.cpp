@@ -38,6 +38,7 @@ int player::displayP()
     if(name)
     {    
         std::cout << "Player " << name << std::endl;
+        std::cout << "Score : " << wins << std::endl;
     }
     else
     {
