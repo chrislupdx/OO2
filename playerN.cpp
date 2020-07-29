@@ -26,6 +26,10 @@ int playerN::play()
     return playerData->play();
 }
 
+int playerN::deleteGame(int option)
+{
+    return playerData->delGame(option);
+}
 
 int playerN::addGame(game * gametoadd)
 {

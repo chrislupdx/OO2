@@ -27,9 +27,25 @@ sys::~sys()
     removeAll();
 }
 
+int sys::deleteGame(char * name, int option)
+{
+    return deleteGame(head, name, option);
+}
+
+int sys::deleteGame(playerN * head, char * nametf, int option)
+{
+    if(!head) return 0;
+    if(head->compare(nametf) == 0)
+    {
+        head->deleteGame(option);
+    }
+    return deleteGame(head->to_next(), nametf, option); 
+}
+
 //wrapper
 int sys::playGame(char * name)
 {
+
     return playGame(head, name);
 }
 
@@ -40,7 +56,6 @@ int sys::playGame(playerN * head, char * name_tf)
 
     if(head->compare(name_tf) == 0)
     {
-        //head is playerN
         head->play(); //this function plays the game then r
     }
     return playGame(head->to_next(), name_tf);

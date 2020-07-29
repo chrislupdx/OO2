@@ -98,6 +98,36 @@ int main()
             done4 = true;
         }
     } 
+    std::cout << "Deleting Games:" << std::endl;
+    bool done6 = false;
+    while (done6 == false)
+    {
+        sys.displayPlayers();
+        std::cout << "Select a player: " << std::endl;
+        char name2[20];
+        std::cin >> name2;
+        std::cin.ignore(100,'\n');
+        //sys.retrievePlayer(name2);  //print the player's games
+        
+        int option = 0;
+        //sys.displayPlayers();
+        std::cout << "Select which game to delete by named #:" << std::endl;
+        std::cin >> option;
+        std::cin.ignore(100,'\n');
+        sys.deleteGame(name2, option);
+
+        sys.retrievePlayer(name2);
+        
+        
+        std::cout << "delete another game? y/n " << std::endl;
+        char yndi;
+        std::cin >> yndi;
+        std::cin.ignore(100,'\n');
+        if(yndi == 'n')
+        {
+            done4 = true;
+        }
+    }
 
     bool done5 = false;
     std::cout << std::endl;
@@ -105,14 +135,14 @@ int main()
     while(done5 == false) //game playing loop for players (this is for getting wins for players
     {
         sys.displayPlayers();  
-        std::cout << "Select a player:" << std::endl;
+        std::cout << "Select a player to delete games off of:" << std::endl;
         char name2[20];
         std::cin >> name2;
         std::cin.ignore(100,'\n');
         sys.retrievePlayer(name1);
         sys.playGame(name2);
 
-        std::cout << "player another gamey/n " << std::endl;
+        std::cout << "play another game? y/n " << std::endl;
         //display player win score
         char ugh;
         std::cin >> ugh;
@@ -121,10 +151,6 @@ int main()
         {
             done5 = true;
         }
-
-    
-    
-    
     }
 
 

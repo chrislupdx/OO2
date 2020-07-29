@@ -16,6 +16,7 @@ class playerN
     int play(); //not sure what args this needs
     int displayPData(); //display player data
     int addGame(game * gametoadd); //wrapper 
+    int deleteGame(int option);
 
     protected:
     player * playerData; //player is a derived class of gamesL

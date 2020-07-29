@@ -17,9 +17,11 @@ class sys
     int deletePlayer(char * name);
     int deletePlayer(playerN *& head, char * player_name);
     int playGame(char * name); //plays the top game of that person, then rotates    
+    int deleteGame(char * name, int option);
     //int sortList(); //goes through the list of players and inserting them in sorted order to sortH
     protected:
     int playGame(playerN * head, char * player_name); 
+    int deleteGame(playerN * head, char * nametf, int option);
     int addGame(char * player_name, game * gametoa); 
     playerN * head; //this is an LLL of players
     //playerN * sortH; //this is the sorted one
