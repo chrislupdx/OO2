@@ -1,5 +1,6 @@
 //playerN.h
 //chris Lu
+//program 2
 //this is a node  for players
 //cs202
 #include "gamesList.h"

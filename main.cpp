@@ -1,4 +1,8 @@
 //thiS is the implementation of main it likely talks to the game system
+//Chris LU
+//cs202
+//program 2
+//main.cpp
 #include "sys.h"
 //#include "game.h"
 //#include "gamesList.h"

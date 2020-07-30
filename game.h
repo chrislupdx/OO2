@@ -2,6 +2,7 @@
 //This is the implementation of game.h
 //chris lu
 //cs202
+//program 2
 class game
 {
     public:

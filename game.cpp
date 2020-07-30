@@ -1,4 +1,7 @@
 //this is the implementation of game.cpp
+//game.cpp
+//Chris Lu
+//cs202
 #include "game.h"
 #include <cstddef>
 #include <cstring>
