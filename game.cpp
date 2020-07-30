@@ -10,10 +10,11 @@
  * 2game Class:  line 188
  */
 
-int game::get_name() {return name;} //name is aterrible name
-char * game::get_tag() {return tag;}
-bool game::get_win() { return win;}
+int game::get_name() {return name;} //getter for name
+char * game::get_tag() {return tag;} //getter for tag
+bool game::get_win() { return win;} //returns bool
 
+//default constructor
 game::game()
 {
     tag = NULL;
@@ -21,6 +22,7 @@ game::game()
     name = 0;
 }
 
+//parameterized constructor
 game::game(int nametoadd)
 {
     tag = NULL;
@@ -28,6 +30,7 @@ game::game(int nametoadd)
     name = nametoadd;
 }
 
+//copy constructor
 game::game(game * gtcp)
 {
     tag = new char[strlen(gtcp->tag) + 1];
@@ -36,16 +39,16 @@ game::game(game * gtcp)
     win = gtcp->win;
 }
 
-game::~game()
+game::~game() //virtual destructor
 {
     tag = NULL;
     name = 0;
     win = false;
 }
 
+//display function for individual games (not virtual)
 int game::display()
 {
-    //displaying order in list would bedope but uncessary
     if(name)
     {
         std::cout << "Given #: " << name << std::endl;
@@ -62,23 +65,25 @@ int game::display()
     return 1;
 }
 
+//virtual default
 int game::play()
 {
     std::cout << "default game " << std::endl;
     return 1;
 }
 
-//gets called in play? iddk
+//virtual quit
 void game::quit()
 {
 }
 
+//virtual taketurn
 int game::taketurn()
 {
     return 1;
 }
 
-//sets tag name of player
+//sets tag name of player (virtual)
 int game::setTag(char * name)
 {
     tag = new char[strlen(name) + 1];
@@ -86,7 +91,7 @@ int game::setTag(char * name)
     return 1;
 }
 
-//copies into the calling class
+//copies into the calling class(virtual)
 int game::copy(game * gtcp)
 {
     tag = new char[strlen(gtcp->tag) + 1];
@@ -96,6 +101,7 @@ int game::copy(game * gtcp)
 }
 ///////////////////////////////////////////////////////////////////////
 
+//take turn
 int rngGame::taketurn()
 {
     std::cout << "turn taken" << std::endl;
@@ -110,22 +116,22 @@ int rngGame::taketurn()
     return 1;
 }
 
+//constructor
 rngGame::rngGame()
 {
 }
 
+//initialization list used here
 rngGame::rngGame(int nametoadd): game(nametoadd)
 {
-    //name = new char[strlen(nametoadd) + 1];
-    //strcpy(nametoadd, name);
 }
 
-
+//destructor
 rngGame::~rngGame()
 {
 }
 
-//this should cover the pure virtual's play
+//play
 int rngGame::play()
 {
     std::cout << std::endl;
@@ -185,13 +191,14 @@ int rngGame::play()
     return 1;
 }
 
-//quit doesn't really do anything
+//covers virtual
 void rngGame::quit()
 {
     std::cout << "quitting RNG" << std::endl;
     //exits the loop
 }
 
+//covers virtual
 int rngGame::setTag(char * name)
 {
     tag = new char[strlen(name) + 1];
@@ -199,7 +206,7 @@ int rngGame::setTag(char * name)
     return 1;
 }
 
-//copies the data members into the arg.
+//copies the data members into the calling class.
 int rngGame::copy(game * gametcp)
 {
     name = gametcp->get_name();
@@ -217,23 +224,27 @@ int rngGame::rollDie() //i think we need to do rtti style dynamic casting for th
 }
 
 /////////////////////////////////////////////////////////////////////////////////
+
+//returns a val between 1-10
 int yum::roll()
 {
     //rng library pls
     return 5;
 }
 
-
+//init list
 yum::yum(int nametoadd):game(nametoadd)
 {
 
 }
 
+//default constructor
 yum::yum()
 {
 
 }
 
+//covers void
 int yum::play()
 {
     std::cout << std::endl;
@@ -286,23 +297,25 @@ int yum::play()
     return 1;
 }
 
+//used in play
 int yum::taketurn()
 {
     std::cout << "turn taken" << std::endl; 
     return 1;
 }
 
-//quit doesn't really do anythinglol
+//used in play
 void yum::quit()
 {
     std::cout << "quitting YUM" << std::endl;
 }
 
+//destructor
 yum::~yum()
 {
 }
 
-
+//covers virtual
 int yum::setTag(char * name)
 {
     tag = new char[strlen(name) + 1];
@@ -310,6 +323,7 @@ int yum::setTag(char * name)
     return 1;
 }
 
+//copies args into calling class
 int yum::copy(game * gametcp)
 {
     name = gametcp->get_name();

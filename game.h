@@ -3,16 +3,15 @@
 class game
 {
     public:
-    //parameteriazed constructor ?
-    game();
-    game(game * gtcp); //do we need to virtualize this in some way
-    game(int nametoadd);
-    virtual ~game();
-    virtual int play()=0; //pure virtual, can only make pointers via dynamic binding
-    virtual void quit()=0;
-    virtual int taketurn()=0;
-    virtual int setTag(char * name)=0;
-    virtual int copy(game * gametcp)=0; //i think this needs to exist 
+    game(); //default
+    game(game * gtcp); //copy
+    game(int nametoadd); //paramaterized
+    virtual ~game(); //virtual destructor
+    virtual int play()=0; //virtual, can only make pointers via dynamic binding
+    virtual void quit()=0; //virtual
+    virtual int taketurn()=0;//virtual
+    virtual int setTag(char * name)=0; //virtual
+    virtual int copy(game * gametcp)=0; //virtual
     int display(); //ugh god can we even call this
     int get_name();
     char * get_tag();
@@ -30,18 +29,17 @@ class game
 class rngGame : public game
 {
     public:
-        rngGame();
-        rngGame(int nametoadd);
+        rngGame(); //default
+        rngGame(int nametoadd); /
         ~rngGame(); //but that's not an identical signature...does this work?
         //parameterized constructor 
         
-        int play(); //can invoke quit/rollDie/setTag
-        void quit(); //exit the loop + return data bember:
-        int taketurn();
-        int setTag(char * name);
-        //int static_cast<type*>pickCard();
-        int rollDie();
-        int copy(game * gametcp);
+        int play(); //covers virtual
+        void quit(); //used in play
+        int taketurn(); //used in play
+        int setTag(char * name); //used in play
+        int rollDie();  //returns a random number between 1-10
+        int copy(game * gametcp); //copies arg into calling class
 private:
 };
 
