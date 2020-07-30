@@ -48,11 +48,11 @@ int game::display()
     //displaying order in list would bedope but uncessary
     if(name)
     {
-    std::cout << "Given #: " << name << std::endl;
+        std::cout << "Given #: " << name << std::endl;
     }
     if(win)
     {
-    std::cout << "win? : " << win << std::endl;
+        std::cout << "win? : " << win << std::endl;
     }
     if(tag)
     {
@@ -73,9 +73,9 @@ void game::quit()
 {
 }
 
-int game::taketurn(bool & done)
+int game::taketurn()
 {
-    return done;
+    return 1;
 }
 
 //sets tag name of player
@@ -96,16 +96,17 @@ int game::copy(game * gtcp)
 }
 ///////////////////////////////////////////////////////////////////////
 
-int rngGame::taketurn(bool & done)
+int rngGame::taketurn()
 {
-    std::cout << "play again? (y/n)" << std::endl;
-    char choice;
-    std::cin >> choice;
-    std::cin.ignore(100,'\n');
-    if(choice == 'n')
-    {
-        done = true;
-    }
+    std::cout << "turn taken" << std::endl;
+    //std::cout << "play again? (y/n)" << std::endl;
+    //char choice;
+    //std::cin >> choice;
+    //std::cin.ignore(100,'\n');
+    //if(choice == 'n')
+    //{
+    //    done = true;
+    //}
     return 1;
 }
 
@@ -143,6 +144,7 @@ int rngGame::play()
         std::cin >> response;
         std::cin.ignore(100,'\n');
         int outcome = 0;
+        taketurn();
         if(response == 'y')
         {
             outcome = rollDie();
@@ -254,6 +256,7 @@ int yum::play()
         int guess = 0;
         std::cin >> guess;
         std::cin.ignore(100,'\n');
+        taketurn();
         if(guess == housecore)
         {
             std::cout << "win" << std::endl;
@@ -283,8 +286,9 @@ int yum::play()
     return 1;
 }
 
-int yum::taketurn(bool & done)
+int yum::taketurn()
 {
+    std::cout << "turn taken" << std::endl; 
     return 1;
 }
 
@@ -319,7 +323,6 @@ int yum::copy(game * gametcp)
 blackjack::blackjack(int nametoadd): game(nametoadd)
 {
 }
-
 blackjack::blackjack()
 {
 }
@@ -330,15 +333,73 @@ blackjack::~blackjack()
 
 int blackjack::play()
 {
+    std::cout << std::endl;
+    std::cout << "playing blackjack" << std::endl;
+    
+    char name[20];
+    std::cout << "input nametag " << std::endl;
+    std::cin >> name;
+    std::cin.ignore(100,'\n');
+    setTag(name);
+    std::cout << "tag is : " << tag << std::endl;
+    std::cout << std::endl;
+
+    bool done5 = true;
+    while(done5)
+    {
+        //int firstcard = roll();
+        //int secondcard = roll();
+        //int thirdcard = roll();
+        int p1 = 0;
+        int p2 = 0;
+        std::cout << "pick your first card 1,2,3" << std::endl;
+        std::cin >> p1;
+        std::cin.ignore(100,'\n');
+        std::cout << "pick your second card 1, 2, 3" << std::endl;
+        std::cin >> p2;
+        std::cin.ignore(100,'\n');
+        int tally = p1 + p2;
+        taketurn();
+        std::cout << "player hand :" << tally << std::endl;
+
+        if(tally == 21)
+        {
+            std::cout << "win" << std::endl;
+            win = true;
+        }
+        else
+        {
+            std::cout << "lose" << std::endl;
+            win = false;
+        }
+        std::cout << "play again? (y/n)" << std::endl;
+        char choice;
+        std::cin >> choice;
+        std::cin.ignore(100,'\n');
+        if(choice == 'Y' || choice == 'y')
+        {
+            std::cout << "MOAR" << std::endl;
+        }
+        else
+        {
+            done5 = false;
+            quit();
+            return 1;
+        }
+
+    }
     return 1;
 }
 
 void blackjack::quit()
 {
+    std::cout <<"quitting blackjack" <<std::endl;
 }
 
 int blackjack::setTag(char * name)
 {
+    tag = new char[strlen(name) + 1];
+    strcpy(tag, name);
     return 1;
 }
 
@@ -350,15 +411,8 @@ int blackjack::copy(game * gametcp)
     return 1;
 }
 
-int blackjack::taketurn(bool& done)
+int blackjack::taketurn()
 {
-    std::cout << "play again? (y/n)" << std::endl;
-    char choice;
-    std::cin >> choice;
-    std::cin.ignore(100,'\n');
-    if(choice == 'n')
-    {
-        done = true;
-    }
+    std::cout << "turn taken" << std::endl;
     return 1;
 }

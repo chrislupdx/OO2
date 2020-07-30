@@ -14,7 +14,7 @@ public:
     int removeAll(gameN * rear);
     int play(); 
     int display(gameN * rear);
-    int compareWins(gamesL * listtocompare);
+    int compareWins(gamesL * listtocompare); //are we even able to point them to each other
     int sumWins(); //goes through the list and gets all of them
     int get_wins(); //for the client (does it actually grab all of them)
     int set_wins(int value);

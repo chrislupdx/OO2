@@ -10,7 +10,7 @@ class game
     virtual ~game();
     virtual int play()=0; //pure virtual, can only make pointers via dynamic binding
     virtual void quit()=0;
-    virtual int taketurn(bool & done)=0;
+    virtual int taketurn()=0;
     virtual int setTag(char * name)=0;
     virtual int copy(game * gametcp)=0; //i think this needs to exist 
     int display(); //ugh god can we even call this
@@ -37,7 +37,7 @@ class rngGame : public game
         
         int play(); //can invoke quit/rollDie/setTag
         void quit(); //exit the loop + return data bember:
-        int taketurn(bool & done);
+        int taketurn();
         int setTag(char * name);
         //int static_cast<type*>pickCard();
         int rollDie();
@@ -53,7 +53,7 @@ class yum : public game
         yum(int nametoadd);
         ~yum();
         
-        int taketurn(bool & done);
+        int taketurn();
         int play(); //NOT DONE 
         void quit();
         int setTag(char * name); //not done
@@ -75,7 +75,7 @@ class blackjack : public game
         void quit(); //not done
         int setTag(char * name); //not done
         int copy(game * gametcp); //not done
-        int taketurn(bool & done);
+        int taketurn();
 
     private:
 };

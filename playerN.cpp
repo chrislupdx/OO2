@@ -22,7 +22,7 @@ playerN::~playerN()
 
 int playerN::compW(playerN * Ptcp)
 {
-    if(playerData->compareWins(Ptcp->playerData) == 0)
+    if(playerData->compareWins(Ptcp->playerData) == 1)
     {
         return 1;
     }
@@ -92,4 +92,5 @@ int playerN::compare(char * name_tocp)
 {
     return playerData->compP(name_tocp);
 }
+
 

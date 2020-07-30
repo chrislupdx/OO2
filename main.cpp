@@ -113,6 +113,8 @@ int main()
         }
     }
 
+
+
     //std::cout << "Deleting Games:" << std::endl;
     //bool adone = false;
     //while(adone == false)
@@ -190,8 +192,14 @@ int main()
             adone = true;
         }
     }
+    std::cout << "constrol" << std::endl;
+    sys.displayPlayers();
+    std::cout << std::endl;
+
     std::cout << "high score for current players" << std::endl;
-    sys.displayPlayers(); //this one should display wins
+    sys.sortList();  //needs love
+    sys.displaySorted();  // needs love
+
 
 
     //bool done3 = false; 
@@ -279,8 +287,6 @@ int main()
     //gamel->play(); 
     //bool done2 = false;
     //bool done3 = false;
-
-
 
 
 

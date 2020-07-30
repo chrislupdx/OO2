@@ -6,23 +6,41 @@ sys::sys()
     sortH = NULL; 
 } 
 
-//copies into empty //tries to do insertion sort
-int sys::sortList(playerN *& empty, playerN *& tocopy)
+//do we need it
+//this is the wrapper
+int sys::sortList()
 {
-    playerN * buffer = new playerN; //it should fizzle out of scope after we're done right
-
-    //identify the smallest item
-    //int findSmallest(playerN *& tocopy)
-
-    //insert it
-    //remove it from the source list
- 
-
-
-    insertPlayerN(sortedPlayer, empty);  //eol insetion
-    return 1;
+    return sortList(sortH, head);
 }
 
+int sys::insertsortP(playerN * sortedPlayer, playerN *& emptyhead)
+{
+    if(!emptyhead)  //if empty
+    {
+        emptyhead = sortedPlayer; //is this even possible
+        emptyhead->to_next() = NULL;
+        return 0;
+    }
+
+    //what condiditions need to be 
+    if(sortedPlayer->compW(emptyhead) == 1)//if sortedplayer >= emptyhead
+    {//think about why this works 
+        sortedPlayer->to_next() = emptyhead;   //cosider the recursive scope
+        emptyhead = sortedPlayer;
+        return 0;
+    }
+    return insertsortP(sortedPlayer, emptyhead->to_next());
+}
+
+//takes tocopy and inserts it into empty
+int sys::sortList(playerN *& empty, playerN * tocopy) //this recursion needs love
+{
+    if(!tocopy) return 0; //brought it back lets see
+    playerN * temp = tocopy; 
+    tocopy = tocopy->to_next(); //move through target list  
+    insertsortP(temp, empty); //generates empty (first call)
+    return 1;
+}
 
 //recursively deallocates all nodes
 int sys::removeAll(playerN *& head)
@@ -128,6 +146,21 @@ int sys::displayPlayers(playerN *& head)
     head->displayplayerstats(); //man i want to virtualize display 
     int count = displayPlayers(head->to_next()) + 1;
     return count;
+}
+
+int sys::displaySorted(playerN *& head)
+{
+    if(!head) return 0;
+    head->displayplayerstats();
+    int count = displayPlayers(head->to_next()) + 1;
+    return count;
+}
+
+//displays sortH
+int sys::displaySorted()
+{
+    displaySorted(sortH);
+    return 1;
 }
 
 int sys::displayPlayers()
