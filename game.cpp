@@ -250,7 +250,6 @@ int yum::play()
     std::cout << std::endl;
     std::cout << "playing matching game yum " << std::endl;
 
-    //why does the loop start here
     char name[20];
     std::cout << "input nametag " << std::endl;
     std::cin >> name;
@@ -334,17 +333,23 @@ int yum::copy(game * gametcp)
 
 
 /////////////////////////////////////////////////////////
+
+//int list
 blackjack::blackjack(int nametoadd): game(nametoadd)
 {
 }
+
+//default constructor
 blackjack::blackjack()
 {
 }
 
+//default destructor`
 blackjack::~blackjack()
 {
 }
 
+//play
 int blackjack::play()
 {
     std::cout << std::endl;
@@ -405,11 +410,13 @@ int blackjack::play()
     return 1;
 }
 
+//quit
 void blackjack::quit()
 {
     std::cout <<"quitting blackjack" <<std::endl;
 }
 
+//setTag 
 int blackjack::setTag(char * name)
 {
     tag = new char[strlen(name) + 1];
@@ -417,6 +424,7 @@ int blackjack::setTag(char * name)
     return 1;
 }
 
+//copy
 int blackjack::copy(game * gametcp)
 {
     name = gametcp->get_name();
@@ -425,6 +433,7 @@ int blackjack::copy(game * gametcp)
     return 1;
 }
 
+//cover virtual
 int blackjack::taketurn()
 {
     std::cout << "turn taken" << std::endl;

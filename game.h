@@ -13,15 +13,12 @@ class game
     virtual int setTag(char * name)=0; //virtual
     virtual int copy(game * gametcp)=0; //virtual
     int display(); //ugh god can we even call this
-    int get_name();
-    char * get_tag();
+    int get_name(); //getter
+    char * get_tag(); //getter
     bool get_win(); //converts win to a number
-    //int quit();//exit the loop + return data member
     
-    //if(we need overloaded operators) implement here
-    //derived_type * new_ptr = <dynamic_cast><derived_type *> (old_ptr);
-    //getWinData();
-    protected: int name;
+    protected: 
+    int name;
     char * tag;
     bool win; //convert to int
 };
@@ -30,9 +27,8 @@ class rngGame : public game
 {
     public:
         rngGame(); //default
-        rngGame(int nametoadd); /
+        rngGame(int nametoadd);  //parameterized constructor
         ~rngGame(); //but that's not an identical signature...does this work?
-        //parameterized constructor 
         
         int play(); //covers virtual
         void quit(); //used in play
@@ -43,37 +39,35 @@ class rngGame : public game
 private:
 };
 
-//id second game rules
+//this is a matching game
 class yum : public game
 {
     public:
-        yum();
-        yum(int nametoadd);
-        ~yum();
+        yum();//default
+        yum(int nametoadd); //paramterized constructor
+        ~yum(); //destructor
         
-        int taketurn();
-        int play(); //NOT DONE 
-        void quit();
-        int setTag(char * name); //not done
-        int roll();
-        int copy(game * gametcp); //not done
+        int taketurn(); //virtual
+        int play(); //virtual
+        void quit(); //virtual
+        int setTag(char * name); //virtual
+        int roll();  //rolls a rng
+        int copy(game * gametcp); //virtual
     private:
 };
 
-//id third game rules
+//the third game
 class blackjack : public game
 {
-    //each draw two numbres
-    //whoever has the bigger pile wins
     public:
-        blackjack();
-        blackjack(int nametoadd);
-        ~blackjack();
+        blackjack(); //default constructor
+        blackjack(int nametoadd); //paramterized constructor
+        ~blackjack(); //default destructor
         int play(); //not done
         void quit(); //not done
         int setTag(char * name); //not done
         int copy(game * gametcp); //not done
-        int taketurn();
+        int taketurn(); //virtual
 
     private:
 };
