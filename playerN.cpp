@@ -1,25 +1,32 @@
 //playerN.cpp
+//chris lu
+//cs202
+//thsi is the implemntation of the player node
 #include "playerN.h"
 #include <iostream>
 //#include "player.h"
 
+//default constructor
 playerN::playerN()
 {
     playerData = NULL;
 }
 
+//copy constructor
 playerN::playerN(player & playerToadd)
 {
     playerData = new player(playerToadd);
     next = NULL; 
 }
 
+//default destructor
 playerN::~playerN()
 {
     playerData = NULL;
     next = NULL; 
 } 
 
+//copmare function
 int playerN::compW(playerN * Ptcp)
 {
     if(playerData->compareWins(Ptcp->playerData) == 1)
@@ -39,23 +46,26 @@ int playerN::updateWins()
     return 0;
 }
 
+//sets wins
 int playerN::set_wins(int value)
 {
     playerData->set_wins(value);
     return 1;
 }
 
-//can we just touch the cll?
+//calls the player data node play function
 int playerN::play()
 {
     return playerData->play();
 }
 
+//wrapper for a delete function
 int playerN::deleteGame(int option)
 {
     return playerData->delGame(option);
 }
 
+//wrapper for adding a game
 int playerN::addGame(game * gametoadd)
 {
     return playerData->add(gametoadd);
@@ -67,6 +77,7 @@ int playerN::displayPGList()
     return playerData->display();
 }
 
+//to next
 playerN *& playerN::to_next() {return next; }
 
 //this is for displaying One player's games + other data
@@ -74,7 +85,6 @@ int playerN::displayplayerstats()
 {
     if(playerData)
     {
-        //trying to aggregate wins through these
         playerData->displayPlayername(); 
         std::cout << "now printing games" << std::endl;
         playerData->display();
@@ -92,5 +102,3 @@ int playerN::compare(char * name_tocp)
 {
     return playerData->compP(name_tocp);
 }
-
-

@@ -1,53 +1,55 @@
-//this is the implementation fo the game system
+//this is the implementation of the .h for the game system
+//chris lu
+//cs202
+//sys.h
 #include "playerN.h" 
 #include <cstddef>
 class sys
 {
     public:
-    sys();
-    ~sys();
+    sys(); //default constructor
+    ~sys(); //default destructor
     int createPlayer(player name); //hopefully calls player's parameterized cosntructor
     
-    int insertPlayerN(player player_toadd, playerN *& head);
-    int insertsortP(playerN * sortedPlayer, playerN *& emptylist);
-    //insertPlayerN(sortedPlayer, empty);  //eol insetion
-    
-    int displaySorted();
-    int displaySorted(playerN *& head);
+    int insertsortP(playerN * sortedPlayer, playerN *& emptylist); //insert for sort
 
-    //note: if playerN and player are switched at any point night of 7/29: 02 dep is terrible
+    int displaySorted(); //displays sorted
 
-    int displayPlayers();
-    int displayPData(char * player_name);
+    int displayPlayers(); //displays players
     
-    int retrievePlayer(char * player_name);
-    int retrievePlayer(playerN * head, char * name_tf);  //recursive call
+    int displayPData(char * player_name); //display player data
     
-    int addGame(char * player_name, int option, int nam); 
-    int addGame(playerN * head, char * name_tf, game *& gameta); //this call passes the player by re
+    int retrievePlayer(char * player_name); //retrieve player
     
-    int deletePlayer(char * name);
-    int deletePlayer(playerN *& head, char * player_name);
-    int deleteGame(char * name, int option);
+    int addGame(char * player_name, int option, int nam);  //add a game
+    
+    int deletePlayer(char * name); //delete player
+   
+    int deleteGame(char * name, int option); //delete game wrapper
     
     int playGame(char * name); //plays the top game of that person, then rotates    
 
-    int sortList();
-    int sortList(playerN *& empty, playerN * tocopy); //goes through the list of players and inserting them in sorted order to sortH
+    int sortList(); //sort wrapper
     
-    int updateWins();
+    int updateWins();  //sort wins
+
+    int removeAll(); //removes all players
    
     protected:
-    int updateWins(playerN *& head);
-    int playGame(playerN * head, char * player_name); 
-    int deleteGame(playerN * head, char * nametf, int option);
-    int addGame(char * player_name, game * gametoa); 
-   
-    //have a function that does a sort
-    //(set a pointer to head(oldlist)), then set head to null, rebuilding head and temp
+
+    int addGame(playerN * head, char * name_tf, game *& gameta); //this call passes the player by re
+    int deletePlayer(playerN *& head, char * player_name); //recursive delete player
+    int sortList(playerN *& empty, playerN * tocopy); //goes through the list of players and inserting them in sorted order to sortH (recursively)
+    int retrievePlayer(playerN * head, char * name_tf);  //recursive call
+    int insertPlayerN(player player_toadd, playerN *& head); //recursive insert
+    int displaySorted(playerN *& head); //recursive display
+    int updateWins(playerN *& head); //recursive update wins
+    int playGame(playerN * head, char * player_name);  //recurisve play games
+    int deleteGame(playerN * head, char * nametf, int option); //recursive delete games
+    int addGame(char * player_name, game * gametoa);  //add game
+    int displayPlayers(playerN *& head); //could we do this without a mfing reference
+    int removeAll(playerN *& head); //recursive remove all
+    
     playerN * head; //this is an LLL of players
     playerN * sortH; //this is the sorted one
-    int removeAll(playerN *& head);
-    int removeAll();
-    int displayPlayers(playerN *& head); //could we do this without a mfing reference
 };

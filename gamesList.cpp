@@ -1,12 +1,19 @@
-//gamesList.cpp
+//gamesList.cpp 
+//cs202
+//chris lu
+//this file has the .cpp implentation for both gameslist and players
 #include "gamesList.h"
 #include "cstddef"
 #include <iostream>
+
+//default constructor
 gamesL::gamesL()
 {
     wins = 0;
     rear = NULL; 
 }
+
+//default destructor
 gamesL::~gamesL()
 {
     wins = 0;
@@ -26,6 +33,7 @@ int gamesL::compareWins(gamesL * listtocompare)
     return 0;
 }
 
+//sets wins
 int gamesL::set_wins(int value)
 {
     wins = value;
@@ -87,59 +95,6 @@ int gamesL::delGame(int namenumtodel)
     return delGame(namenumtodel, curr, prev); 
 }
 
-//this is a wrapper
-//int gamesL::delGame(int todel, gameN *& curr, gameN *& prev)
-//{
-//    if(this->rear == curr && this->rear == prev) 
-//    {
-//        int name= curr->get_name();
-//        
-//        if(todel == name) 
-//        {
-//        //gameN * temp = curr;
-//        //delete temp;
-//        delete this->rear;
-//        this->rear = NULL;
-//        //temp = NULL;
-//        return 1;
-//        }
-//    }
-//
-//    if(rear == curr) //base case
-//    {
-//        int name = curr->get_name();
-//        if(todel == name)
-//        {
-//            gameN * temp = curr;
-//            curr = curr->to_next();
-//            rear = curr;
-//            delete temp;
-//            temp = NULL;
-//            prev->to_next() = curr; //attempts to take non-pointer value
-//            return 1;
-//        }
-//    }
-//    int name = curr->get_name();
-//    if(todel == name)
-//    {
-//        gameN * temp = curr;
-//        curr = curr->to_next();
-//        delete temp; //i don't know if this actually deleting the thing
-//        temp = NULL;
-//        prev->to_next() = curr;
-//        return 1;
-//    }
-//    //gameN * nextprev = prev->to_next();
-//    //gameN * tonext = curr->to_next();
-//    delGame(todel, curr->to_next(), prev->to_next()); 
-//
-//    //node * temp = curr;
-//    //curr = curr->next();
-//    //delete temp;
-//    //previous->next() = curr;
-//    return 0;
-//}
-
 int gamesL::delGame(int todel, gameN *& rear, gameN *& prev)
 {
     if(this->rear == rear && rear->to_next() == rear) 
@@ -178,10 +133,7 @@ int gamesL::delGame(int todel, gameN *& rear, gameN *& prev)
         temp = NULL;
         return 1;
     }
-    //gameN * nextprev = prev->to_next();
-    //gameN * tonext = curr->to_next();
     delGame(todel, rear->to_next(), prev->to_next()); 
-
     //node * temp = curr;
     //curr = curr->next();
     //delete temp;
@@ -197,19 +149,17 @@ int gamesL::add(game * newN)
     {
         rear = new gameN(newN);  //i think this is using gameN.cpp's upcasting constructor
         rear->to_next() = rear;
-        //rear->set_next(rear); 
         return 0;
     }
     gameN * temp = new gameN(newN);
     gameN * front = rear->to_next();
     rear->to_next() = temp;
     temp->to_next() = front;
-    //rear->set_next(temp); //position temp behind rear
-    //temp->set_next(front);
     rear = temp;
     return 1;
 }
 
+//display wrapper
 int gamesL::display()
 {
     if(wins)
@@ -227,6 +177,7 @@ int gamesL::display()
     return 0;
 }
 
+//recursive display
 int gamesL::display(gameN * curr)
 {
     if(curr == rear)
@@ -243,22 +194,71 @@ int gamesL::display(gameN * curr)
 int gamesL::play()
 {
     rear->play();
-    //update wins
     rear = rear->to_next(); //rotate to the next game
     return 1;
 }
 
+/////////////////////////////////
+//default constructor
+player::player()
+{
+    name = NULL; 
+}
 
-//add the node into the  CLL
-//int gamesL::add(gameN * newNode)
-//{
-//    if(!rear)
-//    {
-//        rear = new gameN(newNode); //find a way to copy the game into this new node
-//        rear->to_next = rear;
-//    }
-//
-//    //0->1
-//    //1->2
-//    //2+
-//}
+//paramterized constructor
+player::player(char * nametoadd )
+{
+    name = NULL;
+    name = new char[strlen(nametoadd) + 1];
+    strcpy(name, nametoadd);
+}
+
+//copy constructor
+player::player(const player & player_toadd)
+{
+    if(player_toadd.name)
+    {
+    name = new char[strlen(player_toadd.name) + 1];
+    strcpy(name, player_toadd.name);
+    }
+    else
+    {
+    name = NULL; 
+    }
+}
+
+//default destructor
+player::~player()
+{
+    name = NULL; 
+}
+
+//display
+int player::displayPlayername()
+{
+    if(name)
+    {    
+        std::cout << "Player " << name << std::endl;
+        if(wins)//i wonder if score should be moved to the base class call
+        {
+        std::cout << "Score : " << wins << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << "no name" << std::endl;
+    }
+
+    return 1;
+}
+
+//compare
+int player::compP(char * nametocp)
+{
+    if(strcmp(name, nametocp) == 0)
+    {
+    return 0;
+    }
+    return 1;
+}
+

@@ -1,5 +1,7 @@
 //game.h
-//This should be virtual
+//This is the implementation of game.h
+//chris lu
+//cs202
 class game
 {
     public:
@@ -68,6 +70,5 @@ class blackjack : public game
         int setTag(char * name); //not done
         int copy(game * gametcp); //not done
         int taketurn(); //virtual
-
     private:
 };

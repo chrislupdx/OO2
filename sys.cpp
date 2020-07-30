@@ -1,28 +1,32 @@
+//this is the implentation of the  game systems' .h
+//cs202
+//chris lu
+//sys.cpp
 #include "sys.h"
 #include <iostream>
+//default constructor
 sys::sys()
 {
     head = NULL; 
     sortH = NULL; 
 } 
 
-//do we need it
 //this is the wrapper
 int sys::sortList()
 {
     return sortList(sortH, head);
 }
 
+//inserts EOL
 int sys::insertsortP(playerN * sortedPlayer, playerN *& emptyhead)
 {
     if(!emptyhead)  //if empty
     {
-        emptyhead = sortedPlayer; //is this even possible
+        emptyhead = sortedPlayer; 
         emptyhead->to_next() = NULL;
         return 0;
     }
 
-    //what condiditions need to be 
     if(sortedPlayer->compW(emptyhead) == 1)//if sortedplayer >= emptyhead
     {//think about why this works 
         sortedPlayer->to_next() = emptyhead;   //cosider the recursive scope
@@ -46,12 +50,11 @@ int sys::sortList(playerN *& empty, playerN * tocopy) //this recursion needs lov
 int sys::removeAll(playerN *& head)
 {
     if(!head) return 0;
-
     removeAll(head->to_next());
-
     return 1;
 }
 
+//updates wins
 int sys::updateWins()
 {
     if(!head) return 0;
@@ -69,8 +72,6 @@ int sys::updateWins(playerN *& head)
     return updateWins(head->to_next());
 }
 
-//write the singular version of that first
-
 //de-allocs the list
 int sys::removeAll()
 {
@@ -83,11 +84,13 @@ sys::~sys()
     removeAll();
 }
 
+//finds and deletes, this is a wrapper
 int sys::deleteGame(char * name, int option)
 {
     return deleteGame(head, name, option);
 }
 
+//recursively finds and calls delete
 int sys::deleteGame(playerN * head, char * nametf, int option)
 {
     if(!head) return 0;
@@ -148,6 +151,7 @@ int sys::displayPlayers(playerN *& head)
     return count;
 }
 
+//recursively displays sorted
 int sys::displaySorted(playerN *& head)
 {
     if(!head) return 0;
@@ -163,6 +167,7 @@ int sys::displaySorted()
     return 1;
 }
 
+//wrapper, calls recursive display players
 int sys::displayPlayers()
 {
     displayPlayers(head);
@@ -220,6 +225,7 @@ int sys::addGame(playerN * head, char * name_tf, game *& gameta)
     return addGame(head->to_next(), name_tf, gameta);
 }
 
+//wrapper calls recursive delete
 int sys::deletePlayer(char * player_name)
 {
     return deletePlayer(head, player_name);

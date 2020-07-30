@@ -1,29 +1,28 @@
 //playerN.h
-//this is a node 
+//chris Lu
+//this is a node  for players
+//cs202
 #include "gamesList.h"
-//#include "player.h"
 class playerN 
 {
     public:
-    playerN();
+    playerN(); //default constructor
     playerN(playerN & playerToadd); //takes a NODE
     playerN(player & playerToadd); //takes a PLAYER 
-    playerN *& to_next(); 
-    ~playerN();
-    int copyN(playerN * playerN_tocopy);
-    int compare(char * name_tocp);
+    playerN *& to_next();  //to next
+    ~playerN(); //default destructor
+    int copyN(playerN * playerN_tocopy); //copy function
+    int compare(char * name_tocp); //compare function
     int compW(playerN * Ptcp); //if calling class has more wins, return 1
    
-    //which displays summed win scores?
-    int displayplayerstats();
+    int displayplayerstats(); //display function 
     int displayPGList(); //displays the gamelist
-
     int play(); //not sure what args this needs
-    int addGame(game * gametoadd); //wrapper 
-    int deleteGame(int option);
-    int updateWins();
-    int set_wins(int value);
+    int addGame(game * gametoadd); //add wrapper
+    int deleteGame(int option); //delete wrapper
+    int updateWins(); //updates wins
+    int set_wins(int value); //setter
     protected:
     player * playerData; //player is a derived class of gamesL
-    playerN * next;
+    playerN * next; 
 };
