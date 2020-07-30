@@ -117,8 +117,6 @@ int main()
         }
     }
 
-
-
     //std::cout << "Deleting Games:" << std::endl;
     //bool adone = false;
     //while(adone == false)
@@ -203,8 +201,6 @@ int main()
     std::cout << "high score for current players" << std::endl;
     sys.sortList();  //needs love
     sys.displaySorted();  // needs love
-
-
 
     //bool done3 = false; 
     ////player * np = new player;

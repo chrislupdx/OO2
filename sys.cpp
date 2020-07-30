@@ -43,7 +43,8 @@ int sys::sortList(playerN *& empty, playerN * tocopy) //this recursion needs lov
     playerN * temp = tocopy; 
     tocopy = tocopy->to_next(); //move through target list  
     insertsortP(temp, empty); //generates empty (first call)
-    return 1;
+
+    return sortList(empty, tocopy);
 }
 
 //recursively deallocates all nodes
