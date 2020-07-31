@@ -11,8 +11,8 @@ int main()
 {
     sys sys;
     bool done = false;
-    //bool done2 = false;
-    //bool done3 = false; 
+    bool done2 = false;
+    bool done3 = false; 
     while(done == false) //testing creating players
     {
         std::cout << "create a player " << std::endl;
@@ -31,43 +31,43 @@ int main()
             done = true;
         }
     };
-    //while(done2 == false) //testing retriving players
-    //{
-    //    std::cout << "retrieving" << std::endl;
-    //    std::cout << "Enter name to retrieve:" << std::endl;
-    //    sys.displayPlayers(); 
-    //    char name1[20];
-    //    std::cin >>name1;
-    //    std::cin.ignore(100,'\n');
-    //    sys.retrievePlayer(name1);
-    //    std::cout << "retrieve another? y/n " << std::endl;
-    //    char yna;
-    //    std::cin >> yna;
-    //    std::cin.ignore(100,'\n');
-    //    if(yna == 'n')
-    //    {
-    //        done2 = true;
-    //    }
-    //}
-    //while(done3 == false) //testing deleting players
-    //{
-    //    std::cout << "deleting" << std::endl;
-    //    sys.displayPlayers();
-    //    std::cout << "enter name to delete: " << std::endl;
-    //    char name2[20];
-    //    std::cin >>name2;
-    //    std::cin.ignore(100,'\n');
-    //    sys.deletePlayer(name2);
-    //    sys.displayPlayers(); 
-    //    std::cout << "delete another? y/n " << std::endl;
-    //    char ynd;
-    //    std::cin >> ynd;
-    //    std::cin.ignore(100,'\n');
-    //    if(ynd == 'n')
-    //    {
-    //        done3 = true;
-    //    }
-    //}
+    while(done2 == false) //testing retriving players
+    {
+        std::cout << "retrieving" << std::endl;
+        std::cout << "Enter name to retrieve:" << std::endl;
+        sys.displayPlayers(); 
+        char name1[20];
+        std::cin >>name1;
+        std::cin.ignore(100,'\n');
+        sys.retrievePlayer(name1);
+        std::cout << "retrieve another? y/n " << std::endl;
+        char yna;
+        std::cin >> yna;
+        std::cin.ignore(100,'\n');
+        if(yna == 'n')
+        {
+            done2 = true;
+        }
+    }
+    while(done3 == false) //testing deleting players
+    {
+        std::cout << "deleting" << std::endl;
+        sys.displayPlayers();
+        std::cout << "enter name to delete: " << std::endl;
+        char name2[20];
+        std::cin >>name2;
+        std::cin.ignore(100,'\n');
+        sys.deletePlayer(name2);
+        sys.displayPlayers(); 
+        std::cout << "delete another? y/n " << std::endl;
+        char ynd;
+        std::cin >> ynd;
+        std::cin.ignore(100,'\n');
+        if(ynd == 'n')
+        {
+            done3 = true;
+        }
+    }
     std::cout << std::endl;
 
     std::cout << "Making games: Select a player to add to their gamelist:" << std::endl;
@@ -117,48 +117,48 @@ int main()
         }
     }
 
-    //std::cout << "Deleting Games:" << std::endl;
-    //bool adone = false;
-    //while(adone == false)
-    //{ 
-    //    bool done6 = false;
-    //    while (done6 == false)
-    //    {
-    //        sys.displayPlayers();
-    //        std::cout << "Select a player: " << std::endl;
-    //        char name2[20];
-    //        std::cin >> name2;
-    //        std::cin.ignore(100,'\n');
-    //        //sys.retrievePlayer(name2);  //print the player's games
+    std::cout << "Deleting Games:" << std::endl;
+    bool zdone = false;
+    while(zdone == false)
+    { 
+        bool done6 = false;
+        while (done6 == false)
+        {
+            sys.displayPlayers();
+            std::cout << "Select a player: " << std::endl;
+            char name2[20];
+            std::cin >> name2;
+            std::cin.ignore(100,'\n');
+            //sys.retrievePlayer(name2);  //print the player's games
 
-    //        int option = 0;
-    //        //sys.displayPlayers();
-    //        std::cout << "Select which game to delete by named #:" << std::endl;
-    //        std::cin >> option;
-    //        std::cin.ignore(100,'\n');
-    //        sys.deleteGame(name2, option);
+            int option = 0;
+            //sys.displayPlayers();
+            std::cout << "Select which game to delete by named #:" << std::endl;
+            std::cin >> option;
+            std::cin.ignore(100,'\n');
+            sys.deleteGame(name2, option);
 
-    //        sys.retrievePlayer(name2);
+            sys.retrievePlayer(name2);
 
 
-    //        std::cout << "delete another game? y/n " << std::endl;
-    //        char yndi;
-    //        std::cin >> yndi;
-    //        std::cin.ignore(100,'\n');
-    //        if(yndi == 'n')
-    //        {
-    //            done6 = true;
-    //        }
-    //    }
-    //    std::cout << "select another player (to del game)? y/n " << std::endl;
-    //    char ayndi;
-    //    std::cin >> ayndi;
-    //    std::cin.ignore(100,'\n');
-    //    if(ayndi == 'n')
-    //    {
-    //        adone = true;
-    //    }
-    //}
+            std::cout << "delete another game? y/n " << std::endl;
+            char yndi;
+            std::cin >> yndi;
+            std::cin.ignore(100,'\n');
+            if(yndi == 'n')
+            {
+                done6 = true;
+            }
+        }
+        std::cout << "select another player (to del game)? y/n " << std::endl;
+        char ayndi;
+        std::cin >> ayndi;
+        std::cin.ignore(100,'\n');
+        if(ayndi == 'n')
+        {
+            zdone = true;
+        }
+    }
 
     std::cout<<std::endl; 
     std::cout << "Playing games:" << std::endl;
@@ -198,7 +198,7 @@ int main()
     sys.displayPlayers();
     std::cout << std::endl;
 
-    std::cout << "high score for current players" << std::endl;
+    std::cout << "high score for current players with wins" << std::endl;
     sys.sortList();  //needs love
     sys.displaySorted();  // needs love
 

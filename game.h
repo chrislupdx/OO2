@@ -68,6 +68,7 @@ class blackjack : public game
         ~blackjack(); //default destructor
         int play(); //not done
         void quit(); //not done
+        int roll();
         int setTag(char * name); //not done
         int copy(game * gametcp); //not done
         int taketurn(); //virtual

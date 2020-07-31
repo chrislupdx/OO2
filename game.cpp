@@ -222,8 +222,9 @@ int rngGame::copy(game * gametcp)
 //returns a random value between 1-10
 int rngGame::rollDie() //i think we need to do rtti style dynamic casting for this non-virtual
 {
-    return 5;
-    //returns the value
+    srand((unsigned) time(0));
+    int randomNumber = (rand() % 10) + 1;
+    return randomNumber;
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -231,7 +232,9 @@ int rngGame::rollDie() //i think we need to do rtti style dynamic casting for th
 //returns a val between 1-10
 int yum::roll()
 {
-    //rng library pls
+    //srand((unsigned) time(0));
+    //int randomNumber = (rand() % 10) + 1;
+    //return randomNumber;
     return 5;
 }
 
@@ -337,6 +340,8 @@ int yum::copy(game * gametcp)
 
 /////////////////////////////////////////////////////////
 
+
+
 //int list
 blackjack::blackjack(int nametoadd): game(nametoadd)
 {
@@ -352,7 +357,14 @@ blackjack::~blackjack()
 {
 }
 
-//play
+int blackjack::roll()
+{
+    srand((unsigned) time(0));
+    int randomNumber = (rand() % 10) + 1;
+    return randomNumber;
+}
+
+//blackjack wins are bieng weird and funny
 int blackjack::play()
 {
     std::cout << std::endl;
@@ -369,11 +381,16 @@ int blackjack::play()
     bool done5 = true;
     while(done5)
     {
-        //int firstcard = roll();
-        //int secondcard = roll();
-        //int thirdcard = roll();
+        int firstcard = roll();
+        int secondcard = roll();
+        int thirdcard = roll();
         int p1 = 0;
         int p2 = 0;
+        std::cout << "your cards: " << std::endl;
+        std::cout << firstcard << std::endl;
+        std::cout << secondcard << std::endl; 
+        std::cout << thirdcard << std::endl;
+
         std::cout << "pick your first card 1,2,3" << std::endl;
         std::cin >> p1;
         std::cin.ignore(100,'\n');

@@ -19,6 +19,15 @@ playerN::playerN(player & playerToadd)
     next = NULL; 
 }
 
+int playerN::haswins()
+{
+    if(playerData->has_wins() == 1)
+    {
+    return 1;
+    }
+    return 0;
+}
+
 //default destructor
 playerN::~playerN()
 {
@@ -39,12 +48,13 @@ int playerN::compW(playerN * Ptcp)
 //gets all the wins for one person
 int playerN::updateWins()
 {
-    if(playerData)
+    if(playerData->has_wins() == 1)//if we have valuesgreater than zero
     {
     return playerData->get_wins();
     }
     return 0;
 }
+
 
 //sets wins
 int playerN::set_wins(int value)

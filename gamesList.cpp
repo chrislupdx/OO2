@@ -6,6 +6,7 @@
 #include "cstddef"
 #include <iostream>
 #include <cstring>
+//player starts at 200
 //default constructor
 gamesL::gamesL()
 {
@@ -27,6 +28,16 @@ gamesL::~gamesL()
 int gamesL::compareWins(gamesL * listtocompare)
 {
     if(this->wins >= listtocompare->wins)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+//returns 1 if wins is more than 0
+int gamesL::has_wins()
+{
+    if(wins > 0)
     {
         return 1;
     }
@@ -166,14 +177,14 @@ int gamesL::display()
     {
         std::cout << "Wins :" << wins << std::endl;
     }
-    if(!rear)
-    {
-        std::cout << "empty gamelist" << std::endl;
-        return 1;
-    }
-    std::cout << "displaying games: " << std::endl; 
-    display(rear->to_next());
-    std::cout << "display end" << std::endl;
+    //if(!rear)
+    //{
+    //    std::cout << "empty gamelist" << std::endl;
+    //    return 1;
+    //}
+    //std::cout << "displaying games: " << std::endl; 
+    //display(rear->to_next());
+    //std::cout << "display end" << std::endl;
     return 0;
 }
 
@@ -230,7 +241,8 @@ player::player(const player & player_toadd)
 //default destructor
 player::~player()
 {
-    name = NULL; 
+    if(name)
+        delete [] name;
 }
 
 //display
@@ -309,11 +321,12 @@ gameN::~gameN()
 //bool->int conversion of wins
 int gameN::gatherWin()
 {
-  if(aGame->get_win() == true)
-  {
-    return 1; //literally counting ones
-  }
-  return 0;
+    return aGame->get_win();
+  //if(aGame->get_win() == true)
+  //{
+  //  return 1; //literally counting ones
+  //}
+  //return 0;
 }
 
 //calls play

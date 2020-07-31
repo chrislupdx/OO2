@@ -15,7 +15,8 @@ class playerN
     int copyN(playerN * playerN_tocopy); //copy function
     int compare(char * name_tocp); //compare function
     int compW(playerN * Ptcp); //if calling class has more wins, return 1
-   
+
+    int haswins();  //returns 1 if has more than 1 win
     int displayplayerstats(); //display function 
     int displayPGList(); //displays the gamelist
     int play(); //not sure what args this needs

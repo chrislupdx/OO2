@@ -42,6 +42,7 @@ public:
     int sumWins(); //goes through the list and gets all of them
     int get_wins(); //for the client (does it actually grab all of them)
     int set_wins(int value); //sets wins
+    int has_wins(); //return 1 if win > 0
 protected:
     int display(gameN * rear); //recursive display
     int removeAll(gameN * rear); //recursive call

@@ -35,7 +35,8 @@ class sys
     int updateWins();  //sort wins
 
     int removeAll(); //removes all players
-   
+  
+    int removesh(); //removes the scoreboard
     protected:
 
     int addGame(playerN * head, char * name_tf, game *& gameta); //this call passes the player by re

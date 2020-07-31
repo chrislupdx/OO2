@@ -29,7 +29,8 @@ int sys::insertsortP(playerN * sortedPlayer, playerN *& emptyhead)
 
     if(sortedPlayer->compW(emptyhead) == 1)//if sortedplayer >= emptyhead
     {//think about why this works 
-        sortedPlayer->to_next() = emptyhead;   //cosider the recursive scope
+        std::cout << "ping" << std::endl; //confirming no-point players are being compared
+        sortedPlayer->to_next() = emptyhead;   //cosider the recursive scope 
         emptyhead = sortedPlayer;
         return 0;
     }
@@ -42,8 +43,10 @@ int sys::sortList(playerN *& empty, playerN * tocopy) //this recursion needs lov
     if(!tocopy) return 0; //brought it back lets see
     playerN * temp = tocopy; 
     tocopy = tocopy->to_next(); //move through target list  
-    insertsortP(temp, empty); //generates empty (first call)
-
+    //if(temp->haswins() == 1)  
+    //{
+        insertsortP(temp, empty); //generates empty (first call)
+    //}
     return sortList(empty, tocopy);
 }
 
@@ -59,17 +62,18 @@ int sys::removeAll(playerN *& head)
 int sys::updateWins()
 {
     if(!head) return 0;
-   return updateWins(head);
+    return updateWins(head);
 }
 
 //this one does ALL the players
 int sys::updateWins(playerN *& head)
 {
     if(!head) return 0;
-    //a catch belo1...
-   int caught = head->updateWins();
-   //set the player's wins to caught
+
+    int caught = head->updateWins();
     head->set_wins(caught);
+
+
     return updateWins(head->to_next());
 }
 
@@ -79,10 +83,18 @@ int sys::removeAll()
     return removeAll(head); 
 }
 
+int sys::removesh()
+{
+    return removeAll(sortH);
+}
+
 //default destructor
 sys::~sys()
 {
+    //not sure what 
+
     removeAll();
+    removesh();
 }
 
 //finds and deletes, this is a wrapper
